@@ -1,0 +1,15 @@
+
+Penalty factors
+======================
+
+This argument allows users to apply separate penalty factors to each coefficient. Its default is 1 for each parameter, but other values can be specified. In particular, any variable with penalty.factor equal to zero is not penalized at all! Let vjvj denote the penalty factor for jj th variable. The penalty term becomes
+λ∑j=1pvjPα(βj)=λ∑j=1pvj[(1−α)12β2j+α|βj|].
+
+Note the penalty factors are internally rescaled to sum to nvars.
+
+This is very useful when people have prior knowledge or preference over the variables. In many cases, some variables may be so important that one wants to keep them all the time, which can be achieved by setting corresponding penalty factors to 0:
+
+    p.fac = rep(1, 20)
+    p.fac[c(5, 10, 15)] = 0
+    pfit = glmnet(x, y, penalty.factor = p.fac)
+    plot(pfit, label = TRUE)
