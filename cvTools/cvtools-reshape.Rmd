@@ -1,0 +1,90 @@
+---
+title: "aggregate.cv : Aggregate cross-validation results"
+author: "KevinOBrien"
+date: "8 October 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(cvTools)
+```
+
+
+Reshape cross-validation results into an object of class "cvSelect" with only one column of results.
+
+#### Usage
+
+<pre><code>
+  cvReshape(x, ...)
+
+  ## S3 method for class 'cv'
+ cvReshape(x,
+    selectBest = c("min", "hastie"), seFactor = 1, ...)
+
+  ## S3 method for class 'cvSelect'
+ cvReshape(x,
+    selectBest = c("min", "hastie"), seFactor = 1, ...)
+</code></pre> 
+#### Arguments
+
+* ``x``	: an object inheriting from class "cv" or "cvSelect" that contains cross-validation results (note that the latter includes objects of class "cvTuning").
+
+* selectBest	a character string specifying a criterion for selecting the best model. Possible values are "min" (the default) or "hastie". The former selects the model with the smallest prediction error. The latter is useful for nested models or for models with a tuning parameter controlling the complexity of the model (e.g., penalized regression). It selects the most parsimonious model whose prediction error is no larger than seFactor standard errors above the prediction error of the best overall model. Note that the models are thereby assumed to be ordered from the most parsimonious one to the most complex one. In particular a one-standard-error rule is frequently applied.
+
+* seFactor	
+a numeric value giving a multiplication factor of the standard error for the selection of the best model. This is ignored if selectBest is "min".
+
+* ...	
+additional arguments to be passed down.
+
+#### Examples
+
+```{r}
+library("robustbase")
+data("coleman")
+set.seed(1234)  # set seed for reproducibility
+
+```
+
+```{r}
+
+# perform cross-validation for an LTS regression model
+fitLts <- ltsReg(Y ~ ., data = coleman)
+cvFitLts <- cvLts(fitLts, cost = rtmspe, K = 5, R = 10, 
+    fit = "both", trim = 0.1, seed = 1234)
+
+```
+
+```{r}
+# compare original and reshaped object
+cvFitLts
+```
+
+```{r}
+cvReshape(cvFitLts)
+```
+
+#### Value
+Value
+
+An object of class "cvSelect" with the following components:
+
+* ``n``: an integer giving the number of observations.
+* ``K``: an integer giving the number of folds used in cross-validation.
+* ``R``: an integer giving the number of replications used in cross-validation.
+* ``best``: an integer giving the index of the model with the best prediction performance.
+* ``cv``: a data frame containing the estimated prediction errors for the models. For repeated cross-validation, those are average values over all replications.
+* ``se``: a data frame containing the estimated standard errors of the prediction loss for the models.
+* ``selectBest``: a character string specifying the criterion used for selecting the best model.
+* ``seFactor``: a numeric value giving the multiplication factor of the standard error used for the selection of the best model.
+* ``reps``: a data frame containing the estimated prediction errors for the models from all replications. This is only returned if repeated cross-validation was performed.
+
+
+#### Author(s)
+
+Andreas Alfons
+
+#### See Also
+
+cvFit, cvSelect, cvTuning, aggregate

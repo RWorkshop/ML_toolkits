@@ -1,0 +1,113 @@
+---
+title: "aggregate.cv : Aggregate cross-validation results"
+author: "KevinOBrien"
+date: "8 October 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(cvTools)
+```
+## aggregate.cv 
+
+
+#### Description
+
+Compute summary statistics of results from repeated K-fold cross-validation.
+
+#### Usage
+
+<pre><code>
+  ## S3 method for class 'cv'
+ aggregate(x, FUN = mean, select = NULL,
+    ...)
+
+  ## S3 method for class 'cvSelect'
+ aggregate(x, FUN = mean,
+    select = NULL, ...)
+
+  ## S3 method for class 'cvTuning'
+ aggregate(x, ...)
+</code></pre> 
+#### Arguments
+
+* ``x``	: an object inheriting from class "cv" or "cvSelect" that contains cross-validation results (note that the latter includes objects of class "cvTuning").
+
+* ``FUN``	: a function to compute the summary statistics.
+
+* ``select``: 
+a character, integer or logical vector indicating the columns of cross-validation results for which to compute the summary statistics.
+
+* ``...``: for the "cvTuning" method, additional arguments to be passed to the "cvSelect" method. Otherwise additional arguments to be passed to FUN.
+
+#### Examples
+
+```{r}
+library("robustbase")
+data("coleman")
+set.seed(1234)  # set seed for reproducibility
+
+## set up folds for cross-validation
+folds <- cvFolds(nrow(coleman), K = 5, R = 10)
+
+```
+```{r}
+## compare raw and reweighted LTS estimators for 
+## 50% and 75% subsets
+
+# 50% subsets
+fitLts50 <- ltsReg(Y ~ ., data = coleman, alpha = 0.5)
+cvFitLts50 <- cvLts(fitLts50, cost = rtmspe, folds = folds, 
+    fit = "both", trim = 0.1)
+```
+```{r}
+# 75% subsets
+fitLts75 <- ltsReg(Y ~ ., data = coleman, alpha = 0.75)
+cvFitLts75 <- cvLts(fitLts75, cost = rtmspe, folds = folds, 
+    fit = "both", trim = 0.1)
+```
+```{r}
+# combine results into one object
+cvFitsLts <- cvSelect("0.5" = cvFitLts50, "0.75" = cvFitLts75)
+cvFitsLts
+```
+```{r}
+# summary of the results with the 50% subsets
+aggregate(cvFitLts50, summary)
+# summary of the combined results
+aggregate(cvFitsLts, summary)
+
+```
+```{r}
+## evaluate MM regression models tuned for 
+## 80%, 85%, 90% and 95% efficiency
+tuning <- list(tuning.psi=c(3.14, 3.44, 3.88, 4.68))
+```
+```{r}
+# set up function call
+call <- call("lmrob", formula = Y ~ .)
+# perform cross-validation
+cvFitsLmrob <- cvTuning(call, data = coleman, 
+    y = coleman$Y, tuning = tuning, cost = rtmspe, 
+    folds = folds, costArgs = list(trim = 0.1))
+cvFitsLmrob
+```
+```{r}
+# summary of results
+aggregate(cvFitsLmrob, summary)
+```
+
+#### Value
+
+The "cv" method returns a vector or matrix of aggregated cross-validation results, depending on whether FUN returns a single value or a vector.
+
+For the other methods, a data frame containing the aggregated cross-validation results for each model is returned. In the case of the "cvTuning" method, the data frame contains the combinations of tuning parameters rather than a column describing the models.
+
+#### Author(s)
+
+Andreas Alfons
+
+#### See Also
+
+cvFit, cvSelect, cvTuning, aggregate
