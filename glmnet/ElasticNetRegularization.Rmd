@@ -1,0 +1,27 @@
+---
+title: "Elastic Net Regularization (glmnet)"
+author: "Kevin O'Brien"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+The elastic net method overcomes the limitations of the LASSO (least absolute shrinkage and selection operator) method which uses a penalty function based on 
+$$ {\displaystyle \|\beta \|_{1}=\textstyle \sum _{j=1}^{p}|\beta _{j}|.}  \|\beta\|_1 = \textstyle \sum_{j=1}^p |\beta_j|.$$
+Use of this penalty function has several limitations.
+
+For example, in the "large p, small n" case (high-dimensional data with few examples), the LASSO selects at most n variables before it saturates. Also if there is a group of highly correlated variables, then the LASSO tends to select one variable from a group and ignore the others. 
+
+To overcome these limitations, the elastic net adds a quadratic part to the penalty (${\displaystyle\|\beta\|^{2}}$), which when used alone is ridge regression (known 
+also as Tikhonov regularization). 
+
+The estimates from the elastic net method are defined by 
+$${\displaystyle {\hat {\beta }}\equiv {\underset {\beta }{\operatorname {argmin} }}(\|y-X\beta \|^{2}+\lambda _{2}\|\beta \|^{2}+\lambda _{1}\|\beta \|_{1}).}$$
+The quadratic penalty term makes the loss function strictly convex, and it therefore has a unique minimum. The elastic net method includes the LASSO and ridge regression: in other words, each of them is a special case where 
+${\displaystyle \lambda_{1}=\lambda ,\lambda_{2}=0}$  or  ${\displaystyle \lambda_{1}=0,\lambda_{2}=\lambda}$ . 
+
+Meanwhile, the naive version of elastic net method finds an estimator in a two-stage procedure : first for each fixed ${\displaystyle \lambda_{2}}$ it finds the ridge regression coefficients, and then does a LASSO type shrinkage. 
+
+This kind of estimation incurs a double amount of shrinkage, which leads to increased bias and poor predictions. To improve the prediction performance, the authors rescale the coefficients of the naive version of elastic net by multiplying the estimated coefficients by ${\displaystyle (1+\lambda_{2})}$. 
