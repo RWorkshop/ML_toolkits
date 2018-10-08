@@ -1,0 +1,141 @@
+---
+title: "cvTools"
+author: "KevinOBrien"
+date: "8 October 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(cvTools)
+```
+
+cvSelect {cvTools}	R Documentation
+Model selection based on cross-validation
+
+Description
+
+Combine cross-validation results for various models into one object and select the model with the best prediction performance.
+
+Usage
+<pre><code>
+  cvSelect(..., .reshape = FALSE,
+    .selectBest = c("min", "hastie"), .seFactor = 1)
+</code></pre>    
+
+#### Arguments
+
+* ...	
+objects inheriting from class "cv" or "cvSelect" that contain cross-validation results.
+* .reshape	
+a logical indicating whether objects with more than one column of cross-validation results should be reshaped to have only one column (see "Details").
+* .selectBest	
+a character string specifying a criterion for selecting the best model. Possible values are "min" (the default) or "hastie". The former selects the model with the smallest prediction error. The latter is useful for nested models or for models with a tuning parameter controlling the complexity of the model (e.g., penalized regression). It selects the most parsimonious model whose prediction error is no larger than .seFactor standard errors above the prediction error of the best overall model. Note that the models are thereby assumed to be ordered from the most parsimonious one to the most complex one. In particular a one-standard-error rule is frequently applied.
+* .seFactor	
+a numeric value giving a multiplication factor of the standard error for the selection of the best model. This is ignored if .selectBest is "min".
+
+#### Details
+
+* Keep in mind that objects inheriting from class "cv" or "cvSelect" may contain multiple columns of cross-validation results. This is the case if the response is univariate but the predict method of the fitted model returns a matrix.
+
+* The .reshape argument determines how to handle such objects. If .reshape is FALSE, all objects are required to have the same number of columns and the best model for each column is selected. A typical use case for this behavior would be if the investigated models contain cross-validation results for a raw and a reweighted fit. It might then be of interest to researchers to compare the best model for the raw estimators with the best model for the reweighted estimators.
+
+* If .reshape is TRUE, objects with more than one column of results are first transformed with cvReshape to have only one column. Then the best overall model is selected.
+
+* It should also be noted that the argument names of .reshape, .selectBest and .seFacor start with a dot to avoid conflicts with the argument names used for the objects containing cross-validation results.
+
+#### Value
+
+An object of class "cvSelect" with the following components:
+
+n	
+an integer giving the number of observations.
+K	
+an integer vector giving the number of folds used in cross-validation for the respective model.
+R	
+an integer vector giving the number of replications used in cross-validation for the respective model.
+best	
+an integer vector giving the indices of the models with the best prediction performance.
+cv	
+a data frame containing the estimated prediction errors for the models. For models for which repeated cross-validation was performed, those are average values over all replications.
+se	
+a data frame containing the estimated standard errors of the prediction loss for the models.
+selectBest	
+a character string specifying the criterion used for selecting the best model.
+seFactor	
+a numeric value giving the multiplication factor of the standard error used for the selection of the best model.
+reps	
+a data frame containing the estimated prediction errors from all replications for those models for which repeated cross-validation was performed. This is only returned if repeated cross-validation was performed for at least one of the models.
+
+#### Examples
+```{r}
+
+
+
+library("robustbase")
+data("coleman")
+set.seed(1234)  # set seed for reproducibility
+
+# set up folds for cross-validation
+folds <- cvFolds(nrow(coleman), K = 5, R = 10)
+```
+```{r}
+## compare LS, MM and LTS regression
+
+# perform cross-validation for an LS regression model
+fitLm <- lm(Y ~ ., data = coleman)
+cvFitLm <- cvLm(fitLm, cost = rtmspe, 
+    folds = folds, trim = 0.1)
+```
+```{r}
+# perform cross-validation for an MM regression model
+fitLmrob <- lmrob(Y ~ ., data = coleman)
+cvFitLmrob <- cvLmrob(fitLmrob, cost = rtmspe, 
+    folds = folds, trim = 0.1)
+```
+```{r}
+# perform cross-validation for an LTS regression model
+fitLts <- ltsReg(Y ~ ., data = coleman)
+cvFitLts <- cvLts(fitLts, cost = rtmspe, 
+    folds = folds, trim = 0.1)
+```
+```{r}
+# compare cross-validation results
+cvSelect(LS = cvFitLm, MM = cvFitLmrob, LTS = cvFitLts)
+
+```
+```{r}
+## compare raw and reweighted LTS estimators for 
+## 50% and 75% subsets
+
+# 50% subsets
+fitLts50 <- ltsReg(Y ~ ., data = coleman, alpha = 0.5)
+cvFitLts50 <- cvLts(fitLts50, cost = rtmspe, folds = folds, 
+    fit = "both", trim = 0.1)
+```
+```{r}
+# 75% subsets
+fitLts75 <- ltsReg(Y ~ ., data = coleman, alpha = 0.75)
+cvFitLts75 <- cvLts(fitLts75, cost = rtmspe, folds = folds, 
+    fit = "both", trim = 0.1)
+```
+```{r}
+# combine and plot results
+cvSelect("0.5" = cvFitLts50, "0.75" = cvFitLts75)
+```
+
+#### Note
+
+Even though the function allows to compare cross-validation results obtained with a different number of folds or a different number of replications, such comparisons should be made with care. Hence warnings are issued in those cases. For maximum comparability, the same data folds should be used in cross-validation for all models to be compared.
+
+Author(s)
+
+Andreas Alfons
+
+#### References
+
+Hastie, T., Tibshirani, R. and Friedman, J. (2009) The Elements of Statistical Learning: Data Mining, Inference, and Prediction. Springer, 2nd edition.
+
+See Also
+
+cvFit, cvTuning
