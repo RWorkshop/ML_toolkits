@@ -1,0 +1,59 @@
+---
+title: "``MachineShop::CForestModel ``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(MachineShop)
+```
+
+
+
+Conditional Random Forest Model
+
+#### Description
+
+An implementation of the random forest and bagging ensemble algorithms utilizing conditional
+inference trees as base learners.
+
+#### Usage
+<pre><code>
+
+CForestModel(teststat = c("quad", "max"), testtype = c("Univariate",
+"Teststatistic", "Bonferroni", "MonteCarlo"), mincriterion = 0,
+ntree = 500, mtry = 5, replace = TRUE, fraction = 0.632)
+
+</code></pre>
+####Arguments
+
+teststat character specifying the type of the test statistic to be applied.
+testtype character specifying how to compute the distribution of the test statistic.
+mincriterion value of the test statistic that must be exceeded in order to implement a split.
+ntree number of trees to grow in a forest.
+mtry number of input variables randomly sampled as candidates at each node for
+random forest like algorithms.
+replace logical indicating whether sampling of observations is done with or without replacement.
+fraction fraction of number of observations to draw without replacement (only relevant
+if replace = FALSE).
+
+
+#### Value
+
+MLModel class object.
+See Also
+cforest, fit, resample, tune
+
+#### Examples
+```{r}
+
+library(MASS)
+fit(medv ~ ., data = Boston, model = CForestModel())
+```
+
+Details
+Response Types: factor, numeric, Surv
+Automatic Tuning Grid Parameters: mtry
+Supplied arguments are passed to cforest_control. Further model details can be found in the
+source link below.
+16 confusion
