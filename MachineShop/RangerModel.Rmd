@@ -1,0 +1,63 @@
+
+RangerModel Fast Random Forest Model
+
+#### Description
+
+Fast implementation of random forests or recursive partitioning.
+
+#### Usage
+<pre><code>
+
+RangerModel(num.trees = 500, mtry = NULL, importance = c("impurity",
+"impurity_corrected", "permutation"), min.node.size = NULL,
+replace = TRUE, sample.fraction = ifelse(replace, 1, 0.632),
+splitrule = NULL, num.random.splits = 1, alpha = 0.5,
+minprop = 0.1, split.select.weights = NULL,
+always.split.variables = NULL, respect.unordered.factors = NULL,
+scale.permutation.importance = FALSE, verbose = FALSE)
+
+</code></pre>
+####Arguments
+
+num.trees number of trees.
+mtry number of variables to possibly split at in each node.
+importance variable importance mode.
+min.node.size minimum node size.
+replace logical indicating whether to sample with replacement.
+sample.fraction
+fraction of observations to sample.
+splitrule splitting rule.
+num.random.splits
+number of random splits to consider for each candidate splitting variable in the "extratrees" rule.
+alpha significance threshold to allow splitting in the "maxstat" rule.
+minprop lower quantile of covariate distribution to be considered for splitting in the
+"maxstat" rule.
+split.select.weights
+numeric vector with weights between 0 and 1, representing the probability to
+select variables for splitting.
+always.split.variables
+character vector with variable names to be always selected in addition to the
+mtry variables tried for splitting.
+respect.unordered.factors
+handling of unordered factor covariates.
+scale.permutation.importance
+scale permutation importance by standard error.
+verbose show computation status and estimated runtime.
+58 resample
+Details
+Response Types: factor, numeric, Surv
+Automatic Tuning Grid Parameters: mtry, min.node.size*, splitrule*
+* included only in randomly sampled grid points
+Default values for the NULL arguments and further model details can be found in the source link
+below.
+
+#### Value
+
+MLModel class object.
+See Also
+ranger, fit, resample, tune
+
+#### Examples
+```{r}
+
+fit(Species ~ ., data = iris, model = RangerModel())
