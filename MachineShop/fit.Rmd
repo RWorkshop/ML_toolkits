@@ -1,0 +1,57 @@
+---
+title: "``MachineShop::fit ``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(MachineShop)
+```
+
+## Model Fitting
+
+#### Description
+
+Fit a model to estimate its parameters from a data set.
+
+#### Usage
+<pre><code>
+
+fit(x, ...)
+## S3 method for class 'formula'
+fit(x, data, model, ...)
+## S3 method for class 'ModelFrame'
+fit(x, model, ...)
+## S3 method for class 'recipe'
+fit(x, model, ...)
+24 GAMBoostModel
+
+</code></pre>
+####Arguments
+
+x defined relationship between model predictors and an outcome. May be a ModelFrame
+containing a formula, data, and optionally case weights; a formula; or a recipe.
+... arguments passed to other methods.
+data data.frame containing observed predictors and outcomes.
+model MLModel object, constructor function, or character string naming a constructor
+function that returns an MLModel object.
+Details
+User-specified case weights may be specified for ModelFrames upon creation with the weights
+argument in its constructor.
+Variables in a recipe may be used as case weights by defining a "case_weight" role for them.
+
+#### Value
+
+MLModelFit class object.
+See Also
+ModelFrame, recipe, modelinfo, tune, predict, varimp
+
+#### Examples
+```{r}
+
+## Survival response example
+library(survival)
+library(MASS)
+gbmfit <- fit(Surv(time, status != 2) ~ sex + age + year + thickness + ulcer,
+data = Melanoma, model = GBMModel)
+varimp(gbmfit)
