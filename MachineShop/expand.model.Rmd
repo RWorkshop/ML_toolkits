@@ -1,0 +1,42 @@
+---
+title: "``MachineShop::expand.model ``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(MachineShop)
+```
+
+
+expand.model Model Expansion Over a Grid of Tuning Parameters
+
+#### Description
+
+Expand a model over all combinations of a grid of tuning parameters.
+
+#### Usage
+<pre><code>
+
+expand.model(x, ...)
+
+</code></pre>
+####Arguments
+
+x MLModel function, function name, or object.
+... vectors, factors, or a list containing the parameter values.
+
+#### Value
+
+A list of MLModel objects created from the parameter combinations.
+22 FDAModel
+See Also
+modelinfo, tune
+
+#### Examples
+```{r}
+
+expand.model(GBMModel, n.trees = c(25, 50, 100),
+interaction.depth = 1:3,
+n.minobsinnode = c(5, 10))
+```
