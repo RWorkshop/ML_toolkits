@@ -1,0 +1,63 @@
+---
+title: "``MachineShop::MDAModel ``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(MachineShop)
+```
+
+
+ Mixture Discriminant Analysis Model
+
+#### Description
+
+Performs mixture discriminant analysis.
+
+#### Usage
+<pre><code>
+
+MDAModel(subclasses = 3, sub.df = NULL, tot.df = NULL,
+dimension = sum(subclasses) - 1, eps = .Machine$double.eps,
+iter = 5, method = .(mda::polyreg), trace = FALSE, ...)
+
+
+</code></pre>
+####Arguments
+
+subclasses numeric value or vector of subclasses per class.
+sub.df effective degrees of freedom of the centroids per class if subclass centroid shrinkage
+is performed.
+tot.df specification of the total degrees of freedom as an alternative to sub.df.
+dimension dimension of the discriminant subspace to use for prediction.
+eps numeric threshold for automatically truncating the dimension.
+iter limit on the total number of iterations.
+method regression function used in optimal scaling. The default of linear regression is
+provided by polyreg from the mda package. For penalized mixture discriminant
+models, gen.ridge is appropriate. Other possibilities are mars for multivariate
+adaptive regression splines and bruto for adaptive backfitting of additive
+splines. Use the . operator to quote specified functions.
+trace logical indicating whether iteration information is printed.
+... additional arguments to mda.start and method.
+
+
+#### Examples
+```{r}
+
+fit(Species ~ ., data = iris, model = MDAModel())
+```
+
+Details
+Response Types: factor
+Automatic Tuning Grid Parameters: subclasses
+The predict function for this model additionally accepts the following argument.
+prior prior class membership probabilities for prediction data if different from the training set.
+Default values for the NULL arguments and further model details can be found in the source links
+below.
+
+#### Value
+
+MLModel class object.
+See Also
+mda, predict.mda, fit, resample, tune
