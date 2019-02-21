@@ -1,0 +1,55 @@
+---
+title: "``MachineShop::calibration``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(MachineShop)
+```
+
+
+ Model Calibration
+
+#### Description
+
+Calculate calibration estimates from observed and predicted responses.
+
+#### Usage
+<pre><code>
+
+Calibration(...)
+calibration(x, y = NULL, breaks = 10, ...)
+
+</code></pre>
+####Arguments
+
+... named or unnamed calibration output to combine together with the Calibration
+constructor.
+x observed responses or Resamples object of observed and predicted responses.
+y predicted responses.
+breaks value defining the response variable bins within which to calculate observed
+mean values. May be specified as a number of bins, a vector of breakpoints,
+or NULL to fit smooth curves with splines for survival responses and loess for
+others.
+
+
+
+#### Examples
+```{r}
+
+library(survival)
+library(MASS)
+res <- resample(Surv(time, status != 2) ~ sex + age + year + thickness + ulcer,
+data = Melanoma, model = GBMModel,
+control = CVControl(times = 365 * c(2, 5, 10)))
+cal <- calibration(res)
+plot(cal)
+```
+
+#### Value
+
+Calibration class object that inherits from data.frame.
+See Also
+response, predict, resample, plot
+CForestModel 15
