@@ -1,0 +1,33 @@
+PLSModel Partial Least Squares Model
+
+#### Description
+
+Function to perform partial least squares regression.
+
+#### Usage
+<pre><code>
+
+PLSModel(ncomp = 1, scale = FALSE)
+
+</code></pre>
+####Arguments
+
+ncomp number of components to include in the model.
+scale logical indicating whether to scale the predictors by the sample standard deviation.
+POLRModel 53
+Details
+Response Types: factor, numeric
+Automatic Tuning Grid Parameters: ncomp
+Further model details can be found in the source link below.
+
+#### Value
+
+MLModel class object.
+See Also
+mvr, fit, resample, tune
+
+#### Examples
+```{r}
+
+library(MASS)
+fit(medv ~ ., data = Boston, model = PLSModel())
