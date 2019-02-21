@@ -1,0 +1,53 @@
+---
+title: "``MachineShop::dependence ``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(MachineShop)
+```
+
+
+Partial Dependence
+
+#### Description
+
+Calculate partial dependence of a response on select predictor variables.
+
+#### Usage
+<pre><code>
+
+dependence(object, data = NULL, select = NULL, interaction = FALSE,
+n = 10, intervals = c("uniform", "quantile"), stats = c(Mean =
+base::mean))
+
+</code></pre>
+####Arguments
+
+object MLModelFit object.
+data data.frame containing all predictor variables. If not specified, the training data
+will be used by default.
+select expression indicating predictor variables for which to compute partial dependence
+(see subset for syntax) [default: all].
+interaction logical indicating whether to calculate dependence on the interacted predictors.
+n number of predictor values at which to perform calculations.
+intervals character string specifying whether the n values are spaced uniformly ("uniform")
+or according to variable quantiles ("quantile").
+stats function, one or more function names, or list of named functions with which to
+aggregate the response variable over the non-selected predictor variables.
+
+#### Value
+
+PartialDependence class object that inherits from data.frame.
+diff 19
+See Also
+fit, plot
+
+#### Examples
+```{r}
+
+gbmfit <- fit(Species ~ ., data = iris, model = GBMModel)
+(pd <- dependence(gbmfit, select = c(Petal.Length, Petal.Width)))
+plot(pd)
+```
