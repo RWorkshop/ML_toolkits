@@ -1,0 +1,59 @@
+---
+title: "``MachineShop::CoxModel``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(MachineShop)
+```
+
+
+CoxModel Proportional Hazards Regression Model
+
+#### Description
+
+Fits a Cox proportional hazards regression model. Time dependent variables, time dependent strata,
+multiple events per subject, and other extensions are incorporated using the counting process formulation
+of Andersen and Gill.
+
+#### Usage
+<pre><code>
+
+CoxModel(ties = c("efron", "breslow", "exact"), ...)
+CoxStepAICModel(ties = c("efron", "breslow", "exact"), ...,
+direction = c("both", "backward", "forward"), scope = NULL, k = 2,
+trace = FALSE, steps = 1000)
+
+</code></pre>
+####Arguments
+
+* ties character string specifying the method for tie handling.
+* ... arguments passed to coxph.control.
+* direction mode of stepwise search, can be one of "both" (default), "backward", or "forward".
+* scope defines the range of models examined in the stepwise search. This should be a
+* list containing components upper and lower, both formulae.
+* k multiple of the number of degrees of freedom used for the penalty. Only k = 2 gives the genuine AIC: k = log(nobs) is sometimes referred to as BIC or SBC.
+* trace if positive, information is printed during the running of stepAIC. Larger values may give more information on the fitting process.
+* ``steps``:  maximum number of steps to be considered.
+
+#### Examples
+```{r}
+
+library(survival)
+library(MASS)
+fit(Surv(time, status != 2) ~ sex + age + year + thickness + ulcer,
+data = Melanoma, model = CoxModel())
+
+```
+Details
+Response Types: Surv
+Default values for the NULL arguments and further model details can be found in the source link
+below.
+18 dependence
+
+#### Value
+
+MLModel class object.
+See Also
+cph, coxph, coxph.control, stepAIC, fit, resample, tune
