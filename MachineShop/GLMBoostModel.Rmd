@@ -1,0 +1,56 @@
+---
+title: "``MachineShop::GLMBoostModel ``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(MachineShop)
+```
+
+ Gradient Boosting with Linear Models
+
+#### Description
+
+Gradient boosting for optimizing arbitrary loss functions where component-wise linear models are
+utilized as base-learners.
+GLMBoostModel 27
+
+#### Usage
+<pre><code>
+
+GLMBoostModel(family = NULL, mstop = 100, nu = 0.1,
+risk = c("inbag", "oobag", "none"), stopintern = FALSE,
+trace = FALSE)
+
+</code></pre>
+####Arguments
+
+family Family object. Set automatically according to the class type of the response
+variable.
+* ``mstop``: number of initial boosting iterations.
+nu step size or shrinkage parameter between 0 and 1.
+risk method to use in computing the empirical risk for each boosting iteration.
+stopintern logical inidicating whether the boosting algorithm stops internally when the outof-
+bag risk increases at a subsequent iteration.
+trace logical indicating whether status information is printed during the fitting process.
+
+
+#### Examples
+```{r}
+
+library(MASS
+fit(type ~ ., data = Pima.tr, model = GLMBoostModel())
+```
+
+Details
+Response Types: binary, numeric, Surv
+Automatic Tuning Grid Parameters: mstop
+Default values for the NULL arguments and further model details can be found in the source links
+below.
+
+#### Value
+
+MLModel class object.
+See Also
+glmboost, Family, fit, resample, tune
