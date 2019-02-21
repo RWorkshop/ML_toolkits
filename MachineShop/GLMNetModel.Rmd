@@ -1,0 +1,65 @@
+---
+title: "``MachineShop::GLMNetModel ``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(MachineShop)
+```
+
+ GLM Lasso or Elasticnet Model
+
+#### Description
+
+Fit a generalized linear model via penalized maximum likelihood.
+
+#### Usage
+<pre><code>
+
+GLMNetModel(family = NULL, alpha = 1, lambda = 0,
+standardize = TRUE, intercept = NULL, penalty.factor = .(rep(1,
+nvars)), standardize.response = FALSE, thresh = 1e-07,
+maxit = 1e+05, type.gaussian = .(ifelse(nvars < 500, "covariance",
+"naive")), type.logistic = c("Newton", "modified.Newton"),
+type.multinomial = c("ungrouped", "grouped"))
+
+</code></pre>
+####Arguments
+
+family response type. Set automatically according to the class type of the response
+variable.
+alpha elasticnet mixing parameter.
+lambda regularization parameter. The default value lambda = 0 performs no regularization
+and should be increased to avoid model fitting issues if the number of
+predictor variables is greater than the number of observations.
+standardize logical flag for predictor variable standardization, prior to model fitting.
+intercept logical indicating whether to fit intercepts.
+penalty.factor vector of penalty factors to be applied to each coefficient.
+standardize.response
+logical indicating whether to standardize "mgaussian" response variables.
+thresh convergence threshold for coordinate descent.
+maxit maximum number of passes over the data for all lambda values.
+type.gaussian algorithm type for guassian models.
+type.logistic algorithm type for logistic models.
+type.multinomial
+algorithm type for multinomial models.
+30 Grid
+Details
+Response Types: factor, matrix, numeric, Surv
+Automatic Tuning Grid Parameters: lambda, alpha
+Default values for the NULL arguments and further model details can be found in the source link
+below.
+
+#### Value
+
+MLModel class object.
+See Also
+glmnet, fit, resample, tune
+
+#### Examples
+```{r}
+
+library(MASS)
+fit(medv ~ ., data = Boston, model = GLMNetModel(lambda = 0.01))
+````
