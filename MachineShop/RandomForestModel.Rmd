@@ -1,0 +1,42 @@
+
+RandomForestModel Random Forest Model
+
+#### Description
+
+Implementation of Breiman’s random forest algorithm (based on Breiman and Cutler’s original
+Fortran code) for classification and regression.
+
+#### Usage
+<pre><code>
+
+RandomForestModel(ntree = 500, mtry = .(if (is.factor(y))
+floor(sqrt(nvars)) else max(floor(nvars/3), 1)), replace = TRUE,
+nodesize = .(if (is.factor(y)) 1 else 5), maxnodes = NULL)
+
+</code></pre>
+####Arguments
+
+ntree number of trees to grow.
+mtry number of variables randomly sampled as candidates at each split.
+replace should sampling of cases be done with or without replacement?
+nodesize minimum size of terminal nodes.
+maxnodes maximum number of terminal nodes trees in the forest can have.
+Details
+Response Types: factor, numeric
+Automatic Tuning Grid Parameters: mtry, nodesize*
+* included only in randomly sampled grid points
+Default values for the NULL arguments and further model details can be found in the source link
+below.
+
+#### Value
+
+MLModel class object.
+See Also
+randomForest, fit, resample, tune
+
+#### Examples
+```{r}
+
+library(MASS)
+fit(medv ~ ., data = Boston, model = RandomForestModel())
+RangerModel 57
