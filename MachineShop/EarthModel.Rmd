@@ -1,0 +1,58 @@
+---
+title: "``MachineShop::EarthModel ``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(MachineShop)
+```
+EarthModel Multivariate Adaptive Regression Splines Model
+
+#### Description
+
+Build a regression model using the techniques in Friedman’s papers "Multivariate Adaptive Regression
+Splines" and "Fast MARS".
+
+#### Usage
+<pre><code>
+
+EarthModel(pmethod = c("backward", "none", "exhaustive", "forward",
+"seqrep", "cv"), trace = 0, degree = 1, nprune = NULL, nfold = 0,
+ncross = 1, stratify = TRUE)
+
+</code></pre>
+####Arguments
+
+* ``pmethod``:  pruning method.
+trace level of execution information to display.
+degree maximum degree of interaction.
+nprune maximum number of terms (including intercept) in the pruned model.
+nfold number of cross-validation folds.
+ncross number of cross-validations if nfold > 1.
+stratify logical indicating whether to stratify cross-validation samples by the response
+levels.
+expand.model 21
+Details
+Response Types: factor, numeric
+Automatic Tuning Grid Parameters: nprune, degree*
+* included only in randomly sampled grid points
+Default values for the NULL arguments and further model details can be found in the source link
+below.
+In calls to varimp for EarthModel, argument metric may be specified as "gcv" (default) for the
+generalized cross-validation decrease over all subsets that include each predictor, as "rss" for the
+residual sums of squares decrease, or as "nsubsets" for the number of model subsets that include
+each predictor. Variable importance is automatically scaled to range from 0 to 100. To obtain
+unscaled importance values, set scale = FALSE. See example below.
+
+#### Value
+
+MLModel class object.
+See Also
+earth, fit, resample, tune
+
+#### Examples
+```{r}
+
+modelfit <- fit(Species ~ ., data = iris, model = EarthModel())
+varimp(modelfit, metric = "nsubsets", scale = FALSE)
