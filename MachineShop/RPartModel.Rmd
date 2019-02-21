@@ -1,0 +1,34 @@
+
+60 RPartModel
+response Extract Response Variable
+
+#### Description
+
+Extract the response variable from an object.
+
+#### Usage
+<pre><code>
+
+response(object, ...)
+## S3 method for class 'formula'
+response(object, data, ...)
+## S3 method for class 'recipe'
+response(object, data, ...)
+
+</code></pre>
+####Arguments
+
+object object containing response variable values.
+... arguments passed to other methods.
+data data.frame containing the values of a response variable defined in a formula.
+See Also
+recipe
+
+#### Examples
+```{r}
+
+## Survival response example
+library(survival)
+library(MASS)
+fo <- Surv(time, status != 2) ~ sex + age + year + thickness + ulcer
+response(fo, data = Melanoma)
