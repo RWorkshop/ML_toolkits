@@ -1,0 +1,56 @@
+---
+title: "``MachineShop::LARSModel ``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(MachineShop)
+```
+
+ Least Angle Regression, Lasso and Infinitesimal Forward Stagewise Models
+
+#### Description
+
+Fit variants of Lasso, and provide the entire sequence of coefficients and fits, starting from zero to
+the least squares fit.
+
+#### Usage
+<pre><code>
+
+LARSModel(type = c("lasso", "lar", "forward.stagewise", "stepwise"),
+trace = FALSE, normalize = TRUE, intercept = TRUE, step = NULL,
+use.Gram = TRUE)
+
+</code></pre>
+####Arguments
+
+type model type.
+trace logical indicating whether status information is printed during the fitting process.
+normalize whether to standardize each variable to have unit L2 norm.
+intercept whether to include an intercept in the model.
+step algorithm step number to use for prediction. May be a decimal number indicating
+a fractional distance between steps. If specified, the maximum number of
+algorithm steps will be ceiling(step); otherwise, step will be set equal to the
+source package default maximum [default: max.steps].
+use.Gram whether to precompute the Gram matrix.
+Details
+Response Types: numeric
+Automatic Tuning Grid Parameters: step
+Default values for the NULL arguments and further model details can be found in the source link
+below.
+
+#### Value
+
+MLModel class object.
+See Also
+lars, fit, resample, tune
+LDAModel 33
+
+#### Examples
+```{r}
+
+library(MASS)
+fit(medv ~ ., data = Boston, model = LARSModel)
+
+````
