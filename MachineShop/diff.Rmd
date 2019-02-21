@@ -1,0 +1,45 @@
+
+diff Model Performance Differences
+
+#### Description
+
+Pairwise model differences in resampled performance metrics.
+
+#### Usage
+<pre><code>
+
+## S3 method for class 'Performance'
+diff(x, ...)
+## S3 method for class 'Resamples'
+diff(x, ...)
+## S3 method for class 'MLModelTune'
+diff(x, ...)
+
+</code></pre>
+####Arguments
+
+x object containing resampled metrics.
+... arguments to be passed to other methods.
+
+#### Value
+
+PerformanceDiff class object that inherits from Performance.
+See Also
+performance, resample, tune, plot, summary, t.test
+20 EarthModel
+
+#### Examples
+```{r}
+
+## Survival response example
+library(survival)
+library(MASS)
+fo <- Surv(time, status != 2) ~ sex + age + year + thickness + ulcer
+control <- CVControl()
+gbmres1 <- resample(fo, Melanoma, GBMModel(n.trees = 25), control)
+gbmres2 <- resample(fo, Melanoma, GBMModel(n.trees = 50), control)
+gbmres3 <- resample(fo, Melanoma, GBMModel(n.trees = 100), control)
+res <- Resamples(GBM1 = gbmres1, GBM2 = gbmres2, GBM3 = gbmres3)
+perfdiff <- diff(res)
+summary(perfdiff)
+plot(perfdiff)
