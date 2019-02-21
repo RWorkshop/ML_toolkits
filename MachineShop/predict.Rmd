@@ -1,0 +1,39 @@
+predict Model Prediction
+
+#### Description
+
+Predict outcomes with a fitted model.
+
+#### Usage
+<pre><code>
+
+## S3 method for class 'MLModelFit'
+predict(object, newdata = NULL, times = numeric(),
+type = c("response", "prob"), cutoff = 0.5, ...)
+
+</code></pre>
+####Arguments
+
+object MLModelFit object from a model fit.
+newdata optional data.frame with which to obtain predictions. If not specified, the
+training data will be used by default.
+times numeric vector of follow-up times at which to predict survival events/probabilities.
+type specifies prediction on the original outcome scale ("response") or on a probability
+distribution scale ("prob").
+cutoff threshold above which binary factor probabilities are classified as events, below
+which survival probabilities are classified, and at which expected values are
+rounded for integer outcomes.
+... arguments passed to model-specific prediction functions.
+See Also
+fit, confusion, performance
+QDAModel 55
+
+#### Examples
+```{r}
+
+## Survival response example
+library(survival)
+library(MASS)
+gbmfit <- fit(Surv(time, status != 2) ~ sex + age + year + thickness + ulcer,
+data = Melanoma, model = GBMModel)
+predict(gbmfit, newdata = Melanoma, times = 365 * c(2, 5, 10), type = "prob")
