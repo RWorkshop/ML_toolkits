@@ -1,0 +1,44 @@
+---
+title: "``MachineShop::lift ``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(MachineShop)
+```
+
+
+lift Model Lift
+
+#### Description
+
+Calculate lift estimates from observed and predicted responses.
+
+#### Usage
+<pre><code>
+
+Lift(...)
+lift(x, y = NULL, ...)
+
+</code></pre>
+####Arguments
+
+... named or unnamed lift output to combine together with the Lift constructor.
+x observed responses or Resamples object of observed and predicted responses.
+y predicted responses.
+
+#### Value
+
+Lift class object that inherits from Curves.
+See Also
+response, predict, resample, plot
+
+#### Examples
+```{r}
+
+library(MASS)
+res <- resample(type ~ ., data = Pima.tr, model = GBMModel)
+lf <- lift(res)
+plot(lf)
+```
