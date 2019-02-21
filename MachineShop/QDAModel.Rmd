@@ -1,0 +1,38 @@
+QDAModel Quadratic Discriminant Analysis Model
+
+#### Description
+
+Performs quadratic discriminant analysis.
+
+#### Usage
+<pre><code>
+
+QDAModel(prior = NULL, method = c("moment", "mle", "mve", "t"),
+nu = 5, use = c("plug-in", "predictive", "debiased", "looCV"))
+
+</code></pre>
+####Arguments
+
+prior prior probabilities of class membership if specified or the class proportions in
+the training set otherwise.
+method type of mean and variance estimator.
+nu degrees of freedom for method = "t".
+use type of parameter estimation to use for prediction.
+Details
+Response Types: factor
+The predict function for this model additionally accepts the following argument.
+prior prior class membership probabilities for prediction data if different from the training set.
+Default values for the NULL arguments and further model details can be found in the source links
+below.
+
+#### Value
+
+MLModel class object.
+See Also
+qda, predict.qda, fit, resample, tune
+56 RandomForestModel
+
+#### Examples
+```{r}
+
+fit(Species ~ ., data = iris, model = QDAModel())
