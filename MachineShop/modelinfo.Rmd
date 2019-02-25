@@ -1,0 +1,35 @@
+modelinfo Display Model Information
+
+#### Description
+
+Display information about models provided by the MachineShop package.
+
+#### Usage
+<pre><code>
+
+modelinfo(...)
+
+</code></pre>
+####Arguments
+
+... MLModel objects, constructor functions, constructor function names, or supported
+responses for which to display information. If none are specified, information
+is returned on all available models by default.
+
+#### Value
+
+List of named models containing a descriptive "label", source "packages", supported response
+variable "types", the constructor "arguments", whether there is a pre-defined "grid" of tuning
+parameters, and whether a "varimp" function is implemented for each.
+See Also
+fit, resample, tune
+
+#### Examples
+```{r}
+
+## All models
+modelinfo()
+## Models by response types
+names(modelinfo(factor(0)))
+names(modelinfo(factor(0), numeric(0)))
+```
