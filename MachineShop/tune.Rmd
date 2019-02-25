@@ -1,0 +1,80 @@
+
+tune 71
+tune Model Tuning and Selection
+
+#### Description
+
+Evaluate a model over a grid of tuning parameters or a list of specified models and select the best
+one according to resample estimation of predictive performance.
+
+#### Usage
+<pre><code>
+
+tune(x, ...)
+## S3 method for class 'formula'
+tune(x, data, models, grid = 3, fixed = NULL,
+control = CVControl, metrics = NULL, stat = base::mean,
+maximize = TRUE, ...)
+## S3 method for class 'ModelFrame'
+tune(x, models, grid = 3, fixed = NULL,
+control = CVControl, metrics = NULL, stat = base::mean,
+maximize = TRUE, ...)
+## S3 method for class 'recipe'
+tune(x, models, grid = 3, fixed = NULL,
+control = CVControl, metrics = NULL, stat = base::mean,
+maximize = TRUE, ...)
+
+</code></pre>
+####Arguments
+
+x defined relationship between model predictors and an outcome. May be a ModelFrame
+containing a formula, data, and optionally case weights; a formula; or a recipe.
+* ... arguments passed to the metrics functions.
+* data data.frame containing observed predictors and outcomes.
+* models MLModel function, function name, object or list of the aforementioned elements, such as that returned by expand.model.
+grid data.frame containing parameter values at which to evaluate a single model supplied to models, the number of parameter-specific values to generate automatically
+if the model has a pre-defined grid, or a call to Grid. Ignored in the case of a list of models.
+fixed list of fixed parameter values to combine with those in grid.
+* control MLControl object, control function, or character string naming a control function
+defining the resampling method to be employed.
+metrics function, one or more function names, or list of named functions to include in
+the calculation of performance metrics. The default performance metrics are
+used unless otherwise specified. Model selection is based on the first specified
+metric.
+72 tune
+stat function to compute a summary statistic on resampled values of the metric for
+model selection.
+maximize logical indicating whether to select the model having the maximum or minimum
+value of the performance metric. Set automatically if a package metrics
+function is explicitly specified for the model selection.
+
+#### Value
+
+MLModelTune class object that inherits from MLModel.
+See Also
+ModelFrame, recipe, modelinfo, expand.model, Grid, MLControl, fit, plot, summary
+
+#### Examples
+```{r}
+
+## Survival response example
+library(MASS)
+fo <- medv ~ .
+# User-specified grid
+(gbmtune1 <- tune(fo, data = Boston, model = GBMModel,
+grid = expand.grid(n.trees = c(25, 50, 100),
+interaction.depth = 1:3,
+n.minobsinnode = c(5, 10)),
+control = CVControl(folds = 10, repeats = 5)))
+# Automatically generated grid
+(gbmtune2 <- tune(fo, data = Boston, model = GBMModel, grid = 3,
+control = CVControl(folds = 10, repeats = 5)))
+# Randomly sampled grid points
+(gbmtune3 <- tune(fo, data = Boston, model = GBMModel,
+grid = Grid(length = 1000, random = 10),
+control = CVControl(folds = 10, repeats = 5)))
+summary(gbmtune3)
+plot(gbmtune3, type = "line")
+gbmfit <- fit(fo, data = Boston, model = gbmtune3)
+varimp(gbmfit)
+```
