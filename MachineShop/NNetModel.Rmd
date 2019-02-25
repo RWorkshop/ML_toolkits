@@ -1,0 +1,50 @@
+NNetModel Neural Network Model
+
+#### Description
+
+Fit single-hidden-layer neural network, possibly with skip-layer connections.
+
+#### Usage
+<pre><code>
+
+NNetModel(size = 1, linout = FALSE, entropy = NULL, softmax = NULL,
+censored = FALSE, skip = FALSE, rang = 0.7, decay = 0,
+maxit = 100, trace = FALSE, MaxNWts = 1000, abstol = 1e-04,
+reltol = 1e-08)
+NNetModel 47
+
+</code></pre>
+####Arguments
+
+size number of units in the hidden layer.
+linout switch for linear output units.
+* ``entropy``:  switch for entropy (= maximum conditional likelihood) fitting.
+softmax switch for softmax (log-linear model) and maximum conditional likelihood fitting.
+censored a variant on softmax, in which non-zero targets mean possible classes.
+skip switch to add skip-layer connections from input to output.
+rang Initial random weights on [-rang, rang].
+decay parameter for weight decay.
+maxit maximum number of iterations.
+trace switch for tracing optimization.
+MaxNWts maximum allowable number of weights.
+abstol stop if the fit criterion falls below abstol, indicating an essentially perfect fit.
+reltol stop if the optimizer is unable to reduce the fit criterion by a factor of at least
+1 - reltol.
+Details
+Response Types: factor, numeric
+Automatic Tuning Grid Parameters: size, decay
+Default values for the NULL arguments and further model details can be found in the source link
+below.
+
+#### Value
+
+MLModel class object.
+See Also
+nnet, fit, resample, tune
+
+#### Examples
+```{r}
+
+library(MASS)
+fit(medv ~ ., data = Boston, model = NNetModel())
+```
