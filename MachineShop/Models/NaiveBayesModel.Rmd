@@ -1,0 +1,31 @@
+NaiveBayesModel Naive Bayes Classifier Model
+
+#### Description
+
+Computes the conditional a-posterior probabilities of a categorical class variable given independent
+predictor variables using Bayes rule.
+
+#### Usage
+<pre><code>
+
+NaiveBayesModel(laplace = 0)
+
+</code></pre>
+####Arguments
+
+laplace positive numeric controlling Laplace smoothing.
+Details
+Response Types: factor
+Further model details can be found in the source link below.
+
+#### Value
+
+MLModel class object.
+See Also
+naiveBayes, fit, resample, tune
+
+#### Examples
+```{r}
+
+fit(Species ~ ., data = iris, model = NaiveBayesModel())
+```
