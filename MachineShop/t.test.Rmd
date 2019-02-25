@@ -1,0 +1,41 @@
+t.test Paired t-Tests for Model Comparisons
+
+#### Description
+
+Paired t-test comparisons of resampled performance metrics from different models.
+
+#### Usage
+<pre><code>
+
+## S3 method for class 'PerformanceDiff'
+t.test(x, adjust = "holm", ...)
+
+</code></pre>
+####Arguments
+
+* ``x``: object containing paired differences between resampled metrics.
+* ``adjust``:  p-value adjustment for multiple statistical comparisons as implemented by p.adjust.
+... arguments passed to other methods.
+
+#### Value
+
+HTestPerformanceDiff class object that inherits from array. p-values and mean differences are
+contained in the lower and upper triangular portions, respectively, of the first two dimensions.
+Model pairs are contined in the third dimension.
+See Also
+diff
+
+#### Examples
+```{r}
+
+## Numeric response example
+library(MASS)
+fo <- medv ~ .
+control <- CVControl()
+gbmres1 <- resample(fo, Boston, GBMModel(n.trees = 25), control)
+gbmres2 <- resample(fo, Boston, GBMModel(n.trees = 50), control)
+gbmres3 <- resample(fo, Boston, GBMModel(n.trees = 100), control)
+res <- Resamples(GBM1 = gbmres1, GBM2 = gbmres2, GBM3 = gbmres3)
+perfdiff <- diff(res)
+t.test(perfdiff)
+```
