@@ -1,0 +1,50 @@
+
+performance_curve Performance Curves
+
+#### Description
+
+Curves for the analysis of tradeoffs between metrics for assessing performance in classifying binary
+outcomes over the range of possible cutoff probabilities. Available curves include receiver operating
+characteristic (ROC) and precision recall.
+
+#### Usage
+<pre><code>
+
+Curves(...)
+performance_curve(x, ...)
+## S3 method for class 'Resamples'
+performance_curve(x, metrics = c(MachineShop::tpr,
+50 plot
+MachineShop::fpr), na.rm = TRUE, ...)
+## Default S3 method:
+performance_curve(x, y, metrics = c(MachineShop::tpr,
+MachineShop::fpr), ...)
+
+</code></pre>
+####Arguments
+
+... named or unnamed performance_curve output to combine together with the
+Curves constructor.
+x observed responses or Resamples object of observed and predicted responses.
+metrics list of two performance metrics for the analysis [default: ROC metrics]. Precision
+recall curves can be obtained with c(precision, recall).
+na.rm logical indicating whether to remove observed or predicted responses that are
+NA when calculating metrics.
+y predicted responses.
+
+#### Value
+
+Curves class object that inherits from data.frame.
+See Also
+response, predict, resample, metrics, auc, plot, summary
+
+#### Examples
+```{r}
+
+library(MASS)
+res <- resample(type ~ ., data = Pima.tr, model = GBMModel)
+## ROC curve
+roc <- performance_curve(res)
+plot(roc)
+auc(roc)
+```
