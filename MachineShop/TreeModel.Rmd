@@ -1,0 +1,35 @@
+TreeModel Classification and Regression Tree Models
+
+#### Description
+
+A tree is grown by binary recursive partitioning using the response in the specified formula and choosing splits from the terms of the right-hand-side.
+
+#### Usage
+<pre><code>
+
+TreeModel(mincut = 5, minsize = 10, mindev = 0.01,
+split = c("deviance", "gini"))
+
+</code></pre>
+####Arguments
+
+* ``mincut``:  minimum number of observations to include in either child node.
+* minsize smallest allowed node size: a weighted quantity.
+* mindev within-node deviance must be at least this times that of the root node for the node to be split.
+* split splitting criterion to use.
+
+#### Details
+Response Types: factor, numeric
+Further model details can be found in the source link below.
+
+#### Value
+
+MLModel class object.
+See Also
+tree, fit, resample, tune
+
+#### Examples
+```{r}
+
+fit(Species ~ ., data = iris, model = TreeModel())
+```
