@@ -1,0 +1,41 @@
+
+
+62 StackedModel
+StackedModel Stacked Regression Model
+
+#### Description
+
+Fit a stacked regression model from multiple base learners.
+
+#### Usage
+<pre><code>
+
+StackedModel(..., control = CVControl, weights = NULL)
+
+</code></pre>
+####Arguments
+
+... MLModel objects to serve as base learners.
+control MLControl object, control function, or character string naming a control function
+defining the resampling method to be employed for the estimation of base
+learner weights.
+weights optional fixed base learner weights.
+Details
+Response Types: factor, numeric, ordered, Surv
+
+#### Value
+
+StackedModel class object that inherits from MLModel.
+References
+Breiman, L. (1996) Stacked Regression. Machine Learning, 24, 49–64.
+See Also
+fit, resample, tune
+
+#### Examples
+```{r}
+
+library(MASS)
+model <- StackedModel(GBMModel, SVMRadialModel, GLMNetModel(lambda = 0.01))
+modelfit <- fit(medv ~ ., data = Boston, model = model)
+predict(modelfit, newdata = Boston)
+summary 63
