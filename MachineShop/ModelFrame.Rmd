@@ -1,0 +1,46 @@
+
+ModelFrame ModelFrame Class
+
+#### Description
+
+Class for storing a data frame, formula, and optionally weights for fitting MLModels.
+
+#### Usage
+<pre><code>
+
+ModelFrame(x, ...)
+## S3 method for class 'formula'
+ModelFrame(x, data, weights = NULL, strata = NULL,
+na.action = NULL, ...)
+## S3 method for class 'matrix'
+ModelFrame(x, y, weights = NULL, strata = NULL,
+na.action = NULL, ...)
+
+</code></pre>
+####Arguments
+
+x model formula or matrix of predictor variables.
+... arguments passed to other methods.
+data data.frame or an object that can be converted to one.
+weights vector of case weights.
+strata vector of stratification levels.
+na.action action to take if cases contain missing values. The default is first any na.action
+attribute of data, second a na.action setting of options, and third na.fail if
+unset.
+y response variable.
+
+#### Value
+
+ModelFrame class object that inherits from data.frame.
+See Also
+formula, na.fail, na.omit, na.pass
+modelinfo 45
+
+#### Examples
+```{r}
+
+mf <- ModelFrame(ncases / (ncases + ncontrols) ~ agegp + tobgp + alcgp,
+data = esoph, weights = ncases + ncontrols)
+gbmfit <- fit(mf, model = GBMModel)
+varimp(gbmfit)
+```
