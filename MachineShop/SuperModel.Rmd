@@ -1,0 +1,44 @@
+
+SuperModel Super Learner Model
+
+#### Description
+
+Fit a super learner model to predictions from multiple base learners.
+
+#### Usage
+<pre><code>
+
+SuperModel(..., model = GBMModel, control = CVControl,
+all_vars = FALSE)
+
+</code></pre>
+####Arguments
+
+... MLModel objects to serve as base learners.
+model MLModel object, constructor function, or character string naming a constructor
+function to serve as the super model.
+control MLControl object, control function, or character string naming a control function
+defining the resampling method to be employed for the estimation of base
+learner weights.
+all_vars logical indicating whether to include the original predictor variables in the super
+model.
+Details
+Response Types: factor, numeric, ordered, Surv
+SurvMatrix 65
+
+#### Value
+
+SuperModel class object that inherits from MLModel.
+References
+van der Lann, M.J., Hubbard A.E. (2007) Super Learner. Statistical Applications in Genetics and
+Molecular Biology, 6(1).
+See Also
+fit, resample, tune
+
+#### Examples
+```{r}
+
+library(MASS)
+model <- SuperModel(GBMModel, SVMRadialModel, GLMNetModel(lambda = 0.01))
+modelfit <- fit(medv ~ ., data = Boston, model = model)
+predict(modelfit, newdata = Boston)
