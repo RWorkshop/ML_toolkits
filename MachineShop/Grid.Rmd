@@ -1,0 +1,29 @@
+---
+title: "``MachineShop::Grid  ``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(MachineShop)
+```
+
+Grid Tuning Grid Control
+
+#### Description
+
+Defines the control parameters for a tuning grid.
+
+#### Usage
+<pre><code>
+
+Grid(length = 3, random = FALSE)
+
+</code></pre>
+####Arguments
+
+length number of values to be generated for each model parameter in the tuning grid.
+random number of points to be randomly sampled from the tuning grid or FALSE if all
+points are to be used.
+See Also
+tune
