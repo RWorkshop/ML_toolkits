@@ -1,3 +1,22 @@
+
+---
+
+title: "``MachineShop::TreeModel ``"
+
+output: html_document
+
+---
+
+
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = TRUE)
+
+library(MachineShop)
+
+```
+
 TreeModel Classification and Regression Tree Models
 
 #### Description
