@@ -19,19 +19,18 @@ Fits generalized boosted regression models.
 
 GBMModel(distribution = NULL, n.trees = 100, interaction.depth = 1,
 n.minobsinnode = 10, shrinkage = 0.1, bag.fraction = 0.5)
-26 GLMBoostModel
 
 </code></pre>
+
 #### Arguments
 
-distribution either a character string specifying the name of the distribution to use or a list
+* distribution either a character string specifying the name of the distribution to use or a list
 with a component name specifying the distribution and any additional parameters needed. Set automatically according to the class type of the response variable.
-n.trees total number of trees to fit.
-interaction.depth
-maximum depth of variable interactions.
-n.minobsinnode minimum number of observations in the trees terminal nodes.
-shrinkage shrinkage parameter applied to each tree in the expansion.
-bag.fraction fraction of the training set observations randomly selected to propose the next tree in the expansion.
+* n.trees total number of trees to fit.
+* interaction.depth maximum depth of variable interactions.
+* n.minobsinnode minimum number of observations in the trees terminal nodes.
+* shrinkage shrinkage parameter applied to each tree in the expansion.
+* bag.fraction fraction of the training set observations randomly selected to propose the next tree in the expansion.
 
 
 #### Examples
@@ -41,10 +40,10 @@ fit(Species ~ ., data = iris, model = GBMModel())
 ```
 
 #### Details
-Response Types: factor, numeric, Surv
-Automatic Tuning Grid Parameters: n.trees, interaction.depth, shrinkage*, n.minobsinnode*
+* Response Types: factor, numeric, Surv
+* Automatic Tuning Grid Parameters: n.trees, interaction.depth, shrinkage*, n.minobsinnode*
 * included only in randomly sampled grid points
-Default values for the NULL arguments and further model details can be found in the source link
+* Default values for the NULL arguments and further model details can be found in the source link
 below.
 
 #### Value
