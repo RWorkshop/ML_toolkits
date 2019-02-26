@@ -1,0 +1,49 @@
+---
+title: "``MachineShop::KNNModel``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(MachineShop)
+```
+
+KNNModel Weighted k-Nearest Neighbor Model
+
+#### Description
+
+Fit a k-nearest neighbor model for which the k nearest training set vectors (according to Minkowski
+distance) are found for each row of the test set, and prediction is done via the maximum of summed
+kernel densities.
+
+#### Usage
+<pre><code>
+
+KNNModel(k = 7, distance = 2, scale = TRUE, kernel = c("optimal",
+"biweight", "cos", "epanechnikov", "gaussian", "inv", "rank",
+"rectangular", "triangular", "triweight"))
+
+</code></pre>
+####Arguments
+
+k numer of neigbors considered.
+distance Minkowski distance parameter.
+scale logical indicating whether to scale predictors to have equal standard deviations.
+kernel kernel to use.
+Details
+Response Types: factor, numeric, ordinal
+Automatic Tuning Grid Parameters: k, distance*, kernel*
+* included only in randomly sampled grid points
+Further model details can be found in the source link below.
+
+#### Value
+
+MLModel class object.
+See Also
+kknn, fit, resample, tune
+
+#### Examples
+```{r}
+
+fit(Species ~ ., data = iris, model = KNNModel())
+``` 
