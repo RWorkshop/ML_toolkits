@@ -1,0 +1,69 @@
+---
+title: "``MachineShop::C50Model  ``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(MachineShop)
+```
+
+ 13
+C50Model C5.0 Decision Trees and Rule-Based Model
+
+#### Description
+
+Fit classification tree models or rule-based models using Quinlan’s C5.0 algorithm.
+
+#### Usage
+<pre><code>
+
+C50Model(trials = 1, rules = FALSE, subset = TRUE, bands = 0,
+winnow = FALSE, noGlobalPruning = FALSE, CF = 0.25, minCases = 2,
+fuzzyThreshold = FALSE, sample = 0, earlyStopping = TRUE)
+
+</code></pre>
+####Arguments
+
+trials integer number of boosting iterations.
+rules logical indicating whether to decompose the tree into a rule-based model.
+subset logical indicating whether the model should evaluate groups of discrete predictors
+for splits.
+bands integer between 2 and 1000 specifying a number of bands into which to group
+rules ordered by their affect on the error rate.
+winnow logical indicating use of predictor winnowing (i.e. feature selection).
+noGlobalPruning
+logical indicating a final, global pruning step to simplify the tree.
+CF number in (0, 1) for the confidence factor.
+minCases integer for the smallest number of samples that must be put in at least two of the
+splits./
+fuzzyThreshold logical indicating whether to evaluate possible advanced splits of the data.
+sample value between (0, 0.999) that specifies the random proportion of data to use in
+training the model.
+earlyStopping logical indicating whether the internal method for stopping boosting should be
+used.
+Details
+Response Types: factor
+Automatic Tuning Grid Parameters: trials, rules, winnow
+Latter arguments are passed to C5.0Control. Further model details can be found in the source link
+below.
+In calls to varimp for C50Model, argument metric may be spedified as "usage" (default) for the
+percentage of training set samples that fall into all terminal nodes after the split of each predictor or
+as "splits" for the percentage of splits associated with each predictor. Variable importance is automatically
+scaled to range from 0 to 100. To obtain unscaled importance values, set scale = FALSE.
+See example below.
+14 calibration
+
+#### Value
+
+MLModel class object.
+See Also
+C5.0, fit, resample, tune
+
+#### Examples
+```{r}
+
+modelfit <- fit(Species ~ ., data = iris, model = C50Model())
+varimp(modelfit, metric = "splits", scale = FALSE)
+```
+
