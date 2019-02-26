@@ -1,0 +1,94 @@
+---
+title: "``MachineShop::MLModel  ``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(MachineShop)
+```
+
+ MLModel Class Constructor
+
+#### Description
+
+Create a model for use with the MachineShop package.
+
+#### Usage
+<pre><code>
+
+MLModel(name = "MLModel", label = name, packages = character(),
+types = character(), params = list(), grid = function(x, length,
+random, ...) NULL, design = c(NA, "model.matrix", "terms"),
+fit = function(formula, data, weights, ...) stop("no fit function"),
+predict = function(object, newdata, times, ...)
+stop("no predict function"), varimp = function(object, ...) NULL, ...)
+
+</code></pre>
+####Arguments
+
+name character string name for the instantiated MLModel object; same name as the
+object to which the model is assigned.
+label descriptive label for the model.
+packages character vector of packages whose namespaces are required by the model.
+types character vector of response variable types to which the model can be fit. Supported
+types are "binary", "factor", "matrix", "numeric", "ordered", and
+"Surv".
+params list of user-specified model parameters to be passed to the fit function.
+grid tuning grid function whose first agument x is a ModelFrame of the model fit data
+and formula, followed by a length to use in generating sequences of parameter
+values, a number of grid points to sample at random, and an ellipsis (...).
+design character string indicating whether the type of design matrix used to fit the
+model is a "model.matrix", a data.frame of the original predictor variable
+"terms", or unknown (default).
+fit model fitting function whose arguments are a formula, a data frame, case
+weights, and an ellipsis.
+MLModel 43
+predict model prediction function whose arguments are the object returned by fit,
+a newdata frame of predictor variables, optional vector of times at which to
+predict survival, and an ellipsis.
+varimp variable importance function whose arguments are the object returned by fit,
+optional arguments passed from calls to varimp, and an ellipsis.
+... arguments passed from other methods.
+Details
+If supplied, the grid function should return a list whose elements are named after and contain values
+of parameters to include in a tuning grid to be constructed automatically by the package.
+Values returned by the predict functions should be formatted according to the response variable
+types below.
+factor a vector or column matrix of probabilities for the second level of binary factors or a matrix
+whose columns contain the probabilities for factors with more than two levels.
+matrix a matrix of predicted responses.
+numeric a vector or column matrix of predicted responses.
+Surv a matrix whose columns contain survival probabilities at times if supplied or a vector of
+predicted survival means otherwise.
+The varimp function should return a vector of importance values named after the predictor variables
+or a matrix or data frame whose rows are named after the predictors.
+
+#### Value
+
+MLModel class object.
+See Also
+modelinfo, fit, resample, tune
+
+#### Examples
+```{r}
+
+## Logistic regression model
+LogisticModel <- MLModel(
+name = "LogisticModel",
+types = "binary",
+fit = function(formula, data, weights, ...) {
+glm(formula, data = data, weights = weights, family = binomial, ...)
+},
+predict = function(object, newdata, ...) {
+predict(object, newdata = newdata, type = "response")
+},
+varimp = function(object, ...) {
+pchisq(coef(object)^2 / diag(vcov(object)), 1)
+}
+)
+44 ModelFrame
+library(MASS)
+res <- resample(type ~ ., data = Pima.tr, model = LogisticModel)
+summary(res)
+```
