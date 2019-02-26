@@ -27,25 +27,31 @@ type.multinomial = c("ungrouped", "grouped"))
 </code></pre>
 ####Arguments
 
-family response type. Set automatically according to the class type of the response
+* ``family``: response type. Set automatically according to the class type of the response
 variable.
-alpha elasticnet mixing parameter.
-lambda regularization parameter. The default value lambda = 0 performs no regularization
-and should be increased to avoid model fitting issues if the number of
-predictor variables is greater than the number of observations.
-standardize logical flag for predictor variable standardization, prior to model fitting.
+* ``alpha``: elasticnet mixing parameter.
+*  ``lambda``: regularization parameter. The default value lambda = 0 performs no regularization
+and should be increased to avoid model fitting issues if the number of predictor variables is greater than the number of observations.
+* ``standardize``: logical flag for predictor variable standardization, prior to model fitting.
 intercept logical indicating whether to fit intercepts.
-penalty.factor vector of penalty factors to be applied to each coefficient.
-standardize.response
+* ``penalty.factor``: vector of penalty factors to be applied to each coefficient.
+* ``standardize.response``:
 logical indicating whether to standardize "mgaussian" response variables.
-thresh convergence threshold for coordinate descent.
-maxit maximum number of passes over the data for all lambda values.
-type.gaussian algorithm type for guassian models.
-type.logistic algorithm type for logistic models.
-type.multinomial
-algorithm type for multinomial models.
-30 Grid
-Details
+* ``thresh``: convergence threshold for coordinate descent.
+* ``maxit``: maximum number of passes over the data for all lambda values.
+* ``type.gaussian``: algorithm type for guassian models.
+* ``type.logistic``: algorithm type for logistic models.
+* ``type.multinomial``: algorithm type for multinomial models.
+
+
+
+#### Examples
+```{r}
+
+library(MASS)
+fit(medv ~ ., data = Boston, model = GLMNetModel(lambda = 0.01))
+````
+#### Details
 Response Types: factor, matrix, numeric, Surv
 Automatic Tuning Grid Parameters: lambda, alpha
 Default values for the NULL arguments and further model details can be found in the source link
@@ -56,10 +62,3 @@ below.
 MLModel class object.
 See Also
 glmnet, fit, resample, tune
-
-#### Examples
-```{r}
-
-library(MASS)
-fit(medv ~ ., data = Boston, model = GLMNetModel(lambda = 0.01))
-````
