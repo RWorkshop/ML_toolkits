@@ -1,0 +1,58 @@
+---
+title: "``MachineShop::GLMModel   ``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(MachineShop)
+```
+
+Generalized Linear Model
+
+#### Description
+
+Fits generalized linear models, specified by giving a symbolic description
+ of the linear predictor
+and a description
+ of the error distribution.
+
+#### Usage
+<pre><code>
+
+GLMModel(family = NULL, ...)
+GLMStepAICModel(family = NULL, ..., direction = c("both", "backward",
+"forward"), scope = NULL, k = 2, trace = FALSE, steps = 1000)
+
+</code></pre>
+####Arguments
+
+family description of the error distribution and link function to be used in the model.
+Set automatically according to the class type of the response variable.
+... arguments passed to glm.control.
+direction mode of stepwise search, can be one of "both" (default), "backward", or "forward".
+scope defines the range of models examined in the stepwise search. This should be a
+list containing components upper and lower, both formulae.
+k multiple of the number of degrees of freedom used for the penalty. Only k = 2
+gives the genuine AIC: k = log(nobs) is sometimes referred to as BIC or SBC.
+trace if positive, information is printed during the running of stepAIC. Larger values
+may give more information on the fitting process.
+* ``steps``:  maximum number of steps to be considered.
+Details
+Response Types: binary factor, numeric
+Default values for the NULL arguments and further model details can be found in the source link
+below.
+
+#### Value
+
+MLModel class object.
+See Also
+glm, glm.control, stepAIC, fit, resample, tune
+GLMNetModel 29
+
+#### Examples
+```{r}
+
+library(MASS)
+fit(medv ~ ., data = Boston, model = GLMModel())
+```
