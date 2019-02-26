@@ -1,4 +1,13 @@
-PLSModel Partial Least Squares Model
+---
+title: "``MachineShop::PLSModel ``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(MachineShop)
+```
+ Partial Least Squares Model
 
 #### Description
 
