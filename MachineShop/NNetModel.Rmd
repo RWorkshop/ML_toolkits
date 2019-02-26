@@ -1,4 +1,12 @@
-NNetModel Neural Network Model
+---
+title: "``MachineShop::NNetModel ``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(MachineShop)
+``` Neural Network Model
 
 #### Description
 
