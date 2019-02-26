@@ -8,8 +8,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(MachineShop)
 ```
 
-
- Ordered Logistic or Probit Regression Model
+Ordered Logistic or Probit Regression Model
 
 #### Description
 
@@ -18,24 +17,15 @@ Fit a logistic or probit regression model to an ordered factor response.
 #### Usage
 <pre><code>
 
-POLRModel(method = c("logistic", "probit", "loglog", "cloglog",
-"cauchit"))
+POLRModel(method = c("logistic", "probit", "loglog", "cloglog", "cauchit"))
 
 </code></pre>
-####Arguments
 
-method logistic or probit or (complementary) log-log or cauchit (corresponding to a
+#### Arguments
+
+* method logistic or probit or (complementary) log-log or cauchit (corresponding to a
 Cauchy latent variable).
-Details
-Response Types: ordered
-Further model details can be found in the source link below.
 
-#### Value
-
-MLModel class object.
-54 predict
-See Also
-polr, fit, resample, tune
 
 #### Examples
 ```{r}
@@ -46,3 +36,10 @@ df$medv <- cut(Boston$medv, breaks = c(0, 15, 20, 25, 50), ordered = TRUE)
 fit(medv ~ ., data = df, model = POLRModel())
 
 ```
+
+#### Details
+Response Types: ordered
+
+#### Value
+
+MLModel class object.
