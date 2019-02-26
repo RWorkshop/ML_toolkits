@@ -1,5 +1,13 @@
+---
+title: "``MachineShop::RangerModel ``"
+output: html_document
+---
 
-RangerModel Fast Random Forest Model
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(MachineShop)
+```
+ Fast Random Forest Model
 
 #### Description
 
@@ -17,39 +25,33 @@ always.split.variables = NULL, respect.unordered.factors = NULL,
 scale.permutation.importance = FALSE, verbose = FALSE)
 
 </code></pre>
-####Arguments
 
-num.trees number of trees.
-mtry number of variables to possibly split at in each node.
-importance variable importance mode.
-min.node.size minimum node size.
-replace logical indicating whether to sample with replacement.
-sample.fraction
-fraction of observations to sample.
-splitrule splitting rule.
-num.random.splits
+#### Arguments
+
+* num.trees number of trees.
+* mtry number of variables to possibly split at in each node.
+* importance variable importance mode.
+* min.node.size minimum node size.
+* replace logical indicating whether to sample with replacement.
+* sample.fraction fraction of observations to sample.
+* plitrule splitting rule.
+* num.random.splits
 number of random splits to consider for each candidate splitting variable in the "extratrees" rule.
-alpha significance threshold to allow splitting in the "maxstat" rule.
-minprop lower quantile of covariate distribution to be considered for splitting in the
+* alpha significance threshold to allow splitting in the "maxstat" rule.
+* minprop lower quantile of covariate distribution to be considered for splitting in the
 "maxstat" rule.
-split.select.weights
+* split.select.weights
 numeric vector with weights between 0 and 1, representing the probability to
 select variables for splitting.
-always.split.variables
+* always.split.variables
 character vector with variable names to be always selected in addition to the
-mtry variables tried for splitting.
-respect.unordered.factors
+* mtry variables tried for splitting.
+* respect.unordered.factors
+
 handling of unordered factor covariates.
-scale.permutation.importance
+* scale.permutation.importance
 scale permutation importance by standard error.
 verbose show computation status and estimated runtime.
-58 resample
-Details
-Response Types: factor, numeric, Surv
-Automatic Tuning Grid Parameters: mtry, min.node.size*, splitrule*
-* included only in randomly sampled grid points
-Default values for the NULL arguments and further model details can be found in the source link
-below.
 
 #### Value
 
@@ -61,3 +63,11 @@ ranger, fit, resample, tune
 ```{r}
 
 fit(Species ~ ., data = iris, model = RangerModel())
+```
+58 resample
+Details
+Response Types: factor, numeric, Surv
+Automatic Tuning Grid Parameters: mtry, min.node.size*, splitrule*
+* included only in randomly sampled grid points
+Default values for the NULL arguments and further model details can be found in the source link
+below.
