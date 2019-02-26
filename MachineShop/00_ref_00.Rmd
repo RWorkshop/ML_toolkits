@@ -364,72 +364,7 @@ bartMachine, fit, resample, tune
 library(MASS)
 modelfit <- fit(medv ~ ., data = Boston, model = BARTMachineModel())
 varimp(modelfit, metric = "splits", num_replicates = 20, scale = FALSE)
-10 BARTModel
-BARTModel Bayesian Additive Regression Trees Model
-
-#### Description
-
-Flexible nonparametric modeling of covariates for continuous, binary, categorical and time-to-event
-outcomes.
-
-#### Usage
-<pre><code>
-
-BARTModel(K = NULL, sparse = FALSE, theta = 0, omega = 1,
-a = 0.5, b = 1, rho = NULL, augment = FALSE, xinfo = NULL,
-usequants = FALSE, sigest = NA, sigdf = 3, sigquant = 0.9,
-lambda = NA, k = 2, power = 2, base = 0.95, tau.num = NULL,
-offset = NULL, ntree = NULL, numcut = 100, ndpost = 1000,
-nskip = NULL, keepevery = NULL, printevery = 1000)
-
-</code></pre>
-####Arguments
-
-K if provided, then coarsen the times of survival responses per the quantiles 1=K; 2=K; :::;K=K
-to reduce computational burdern.
-sparse logical indicating whether to perform variable selection based on a sparse Dirichlet
-prior rather than simply uniform; see Linero 2016.
-theta, omega theta and omega parameters; zero means random.
-a, b sparse parameters for Beta(a; b) prior: 0:5 <= a <= 1 where lower values
-induce more sparsity and typically b = 1.
-rho sparse parameter: typically rho = p where p is the number of covariates under
-consideration.
-augment whether data augmentation is to be performed in sparse variable selection.
-xinfo optional matrix whose rows are the covariates and columns their cutpoints.
-usequants whether covariate cutpoints are defined by uniform quantiles or generated uniformly.
-sigest normal error variance prior for numeric response variables.
-sigdf degrees of freedom for error variance prior.
-sigquant quantile at which a rough estimate of the error standard deviation is placed.
-lambda scale of the prior error variance.
-k number of standard deviations f(x) is away from +/-3 for categorical response
-variables.
-power, base power and base parameters for tree prior.
-tau.num numerator in the tau definition, i.e., tau = tau:num=(k  sqrt(ntree)).
-offset override for the default offset of F􀀀1(mean(y)) in the multivariate response
-probability P(y[j] = 1jx) = F(f(x)[j] + offset[j]).
-BlackBoostModel 11
-ntree number of trees in the sum.
-numcut number of possible covariate cutoff values.
-ndpost number of posterior draws returned.
-nskip number of MCMC iterations to be treated as burn in.
-keepevery interval at which to keep posterior draws.
-printevery interval at which to print MCMC progress.
-Details
-Response Types: factor, numeric, Surv
-Default values for the NULL arguments and further model details can be found in the source links
-below.
-
-#### Value
-
-MLModel class object.
-See Also
-gbart, mbart, surv.bart, fit, resample, tune
-
-#### Examples
-```{r}
-
-library(MASS)
-modelfit <- fit(medv ~ ., data = Boston, model = BARTModel())
+```
 BlackBoostModel Gradient Boosting with Regression Trees
 
 #### Description
@@ -485,175 +420,9 @@ blackboost, Family, ctree_control, fit, resample, tune
 
 library(MASS)
 fit(type ~ ., data = Pima.tr, model = BlackBoostModel())
-C50Model 13
-C50Model C5.0 Decision Trees and Rule-Based Model
-
-#### Description
-
-Fit classification tree models or rule-based models using Quinlan’s C5.0 algorithm.
-
-#### Usage
-<pre><code>
-
-C50Model(trials = 1, rules = FALSE, subset = TRUE, bands = 0,
-winnow = FALSE, noGlobalPruning = FALSE, CF = 0.25, minCases = 2,
-fuzzyThreshold = FALSE, sample = 0, earlyStopping = TRUE)
-
-</code></pre>
-####Arguments
-
-trials integer number of boosting iterations.
-rules logical indicating whether to decompose the tree into a rule-based model.
-subset logical indicating whether the model should evaluate groups of discrete predictors
-for splits.
-bands integer between 2 and 1000 specifying a number of bands into which to group
-rules ordered by their affect on the error rate.
-winnow logical indicating use of predictor winnowing (i.e. feature selection).
-noGlobalPruning
-logical indicating a final, global pruning step to simplify the tree.
-CF number in (0, 1) for the confidence factor.
-minCases integer for the smallest number of samples that must be put in at least two of the
-splits.
-fuzzyThreshold logical indicating whether to evaluate possible advanced splits of the data.
-sample value between (0, 0.999) that specifies the random proportion of data to use in
-training the model.
-earlyStopping logical indicating whether the internal method for stopping boosting should be
-used.
-Details
-Response Types: factor
-Automatic Tuning Grid Parameters: trials, rules, winnow
-Latter arguments are passed to C5.0Control. Further model details can be found in the source link
-below.
-In calls to varimp for C50Model, argument metric may be spedified as "usage" (default) for the
-percentage of training set samples that fall into all terminal nodes after the split of each predictor or
-as "splits" for the percentage of splits associated with each predictor. Variable importance is automatically
-scaled to range from 0 to 100. To obtain unscaled importance values, set scale = FALSE.
-See example below.
-14 calibration
-
-#### Value
-
-MLModel class object.
-See Also
-C5.0, fit, resample, tune
-
-#### Examples
-```{r}
-
-modelfit <- fit(Species ~ ., data = iris, model = C50Model())
-varimp(modelfit, metric = "splits", scale = FALSE)
-```
 
 
 
-
-GLMModel Generalized Linear Model
-
-#### Description
-
-Fits generalized linear models, specified by giving a symbolic description
- of the linear predictor
-and a description
- of the error distribution.
-
-#### Usage
-<pre><code>
-
-GLMModel(family = NULL, ...)
-GLMStepAICModel(family = NULL, ..., direction = c("both", "backward",
-"forward"), scope = NULL, k = 2, trace = FALSE, steps = 1000)
-
-</code></pre>
-####Arguments
-
-family description of the error distribution and link function to be used in the model.
-Set automatically according to the class type of the response variable.
-... arguments passed to glm.control.
-direction mode of stepwise search, can be one of "both" (default), "backward", or "forward".
-scope defines the range of models examined in the stepwise search. This should be a
-list containing components upper and lower, both formulae.
-k multiple of the number of degrees of freedom used for the penalty. Only k = 2
-gives the genuine AIC: k = log(nobs) is sometimes referred to as BIC or SBC.
-trace if positive, information is printed during the running of stepAIC. Larger values
-may give more information on the fitting process.
-* ``steps``:  maximum number of steps to be considered.
-Details
-Response Types: binary factor, numeric
-Default values for the NULL arguments and further model details can be found in the source link
-below.
-
-#### Value
-
-MLModel class object.
-See Also
-glm, glm.control, stepAIC, fit, resample, tune
-GLMNetModel 29
-
-#### Examples
-```{r}
-
-library(MASS)
-fit(medv ~ ., data = Boston, model = GLMModel())
-
-Grid Tuning Grid Control
-
-#### Description
-
-Defines the control parameters for a tuning grid.
-
-#### Usage
-<pre><code>
-
-Grid(length = 3, random = FALSE)
-
-</code></pre>
-####Arguments
-
-length number of values to be generated for each model parameter in the tuning grid.
-random number of points to be randomly sampled from the tuning grid or FALSE if all
-points are to be used.
-See Also
-tune
-KNNModel 31
-KNNModel Weighted k-Nearest Neighbor Model
-
-#### Description
-
-Fit a k-nearest neighbor model for which the k nearest training set vectors (according to Minkowski
-distance) are found for each row of the test set, and prediction is done via the maximum of summed
-kernel densities.
-
-#### Usage
-<pre><code>
-
-KNNModel(k = 7, distance = 2, scale = TRUE, kernel = c("optimal",
-"biweight", "cos", "epanechnikov", "gaussian", "inv", "rank",
-"rectangular", "triangular", "triweight"))
-
-</code></pre>
-####Arguments
-
-k numer of neigbors considered.
-distance Minkowski distance parameter.
-scale logical indicating whether to scale predictors to have equal standard deviations.
-kernel kernel to use.
-Details
-Response Types: factor, numeric, ordinal
-Automatic Tuning Grid Parameters: k, distance*, kernel*
-* included only in randomly sampled grid points
-Further model details can be found in the source link below.
-
-#### Value
-
-MLModel class object.
-See Also
-kknn, fit, resample, tune
-
-#### Examples
-```{r}
-
-fit(Species ~ ., data = iris, model = KNNModel())
-``` 
 
 
 
@@ -700,73 +469,10 @@ lda, predict.lda, fit, resample, tune
 
 fit(Species ~ ., data = iris, model = LDAModel())
 ```
-LMModel Linear Models
-
-#### Description
-
-Fits linear models.
-
-#### Usage
-<pre><code>
-
-LMModel()
-Details
-Response Types: factor, matrix, numeric
-Further model details can be found in the source link below.
-
-#### Value
-
-MLModel class object.
-See Also
-lm, fit, resample, tune
-
-#### Examples
-```{r}
-
-library(MASS)
-fit(medv ~ ., data = Boston, model = LMModel())
-```
 
 
 
 
-
-
-metricinfo Display Performance Metric Information
-
-#### Description
-
-Display information about metrics provided by the MachineShop package.
-
-#### Usage
-<pre><code>
-
-metricinfo(...)
-
-</code></pre>
-####Arguments
-
-... one or more metric functions, function names, observed response, observed and
-predicted responses, or a Resamples object. If none are specified, information
-is returned on all available metrics by default.
-
-#### Value
-
-List of named metrics containing a descriptive "label", whether to "maximize" the metric for
-better performance, the function "arguments", and supported response variable "types" for each.
-See Also
-metrics, resample
-
-#### Examples
-```{r}
-
-## All metrics
-metricinfo()
-## Metrics by observed and predicted response types
-names(metricinfo(factor(0)))
-names(metricinfo(factor(0), factor(0)))
-names(metricinfo(factor(0), matrix(0)))
-names(metricinfo(factor(0), numeric(0)))
 metrics Performance Metrics
 
 #### Description
@@ -814,10 +520,10 @@ rmsle(observed, predicted = NULL, ...)
 </code></pre>
 ####Arguments
 
-observed observed responses, Curves object, or ConfusionMatrix of observed and predicted
+* ``observed``:  observed responses, Curves object, or ConfusionMatrix of observed and predicted
 responses.
 predicted predicted responses.
-cutoff threshold above which binary factor probabilities are classified as events and
+* ``cutoff``:  threshold above which binary factor probabilities are classified as events and
 below which survival probabilities are classified.
 ... arguments passed to or from other methods.
 metrics list of two performance metrics for the calculation [default: ROC metrics].
@@ -838,7 +544,6 @@ The base MLControl constructor initializes a set of control parameters that are 
 methods.
 BootControl constructs an MLControl object for simple bootstrap resampling in which models are
 fit with bootstrap resampled training sets and used to predict the full data set.
-40 MLControl
 CVControl constructs an MLControl object for repeated K-fold cross-validation. In this procedure,
 the full data set is repeatedly partitioned into K-folds. Within a partitioning, prediction is performed
 on each of the K folds with models fit on all remaining folds.
@@ -863,8 +568,7 @@ TrainControl(...)
 ####Arguments
 
 times numeric vector of follow-up times at which to predict survival probabilities.
-seed integer to set the seed at the start of resampling. This is set to a random integer
-by default (NULL).
+* ``seed``: integer to set the seed at the start of resampling. This is set to a random integer by default (NULL).
 ... arguments to be passed to MLControl.
 samples number of bootstrap samples.
 folds number of cross-validation folds (K).
@@ -930,89 +634,6 @@ f_score(observed, predicted, beta = 2, ...)
 MLMetric(f2_score) <- list(name = "f2_score",
 label = "F Score (beta = 2)",
 maximize = TRUE)
-MLModel MLModel Class Constructor
-
-#### Description
-
-Create a model for use with the MachineShop package.
-
-#### Usage
-<pre><code>
-
-MLModel(name = "MLModel", label = name, packages = character(),
-types = character(), params = list(), grid = function(x, length,
-random, ...) NULL, design = c(NA, "model.matrix", "terms"),
-fit = function(formula, data, weights, ...) stop("no fit function"),
-predict = function(object, newdata, times, ...)
-stop("no predict function"), varimp = function(object, ...) NULL, ...)
-
-</code></pre>
-####Arguments
-
-name character string name for the instantiated MLModel object; same name as the
-object to which the model is assigned.
-label descriptive label for the model.
-packages character vector of packages whose namespaces are required by the model.
-types character vector of response variable types to which the model can be fit. Supported
-types are "binary", "factor", "matrix", "numeric", "ordered", and
-"Surv".
-params list of user-specified model parameters to be passed to the fit function.
-grid tuning grid function whose first agument x is a ModelFrame of the model fit data
-and formula, followed by a length to use in generating sequences of parameter
-values, a number of grid points to sample at random, and an ellipsis (...).
-design character string indicating whether the type of design matrix used to fit the
-model is a "model.matrix", a data.frame of the original predictor variable
-"terms", or unknown (default).
-fit model fitting function whose arguments are a formula, a data frame, case
-weights, and an ellipsis.
-MLModel 43
-predict model prediction function whose arguments are the object returned by fit,
-a newdata frame of predictor variables, optional vector of times at which to
-predict survival, and an ellipsis.
-varimp variable importance function whose arguments are the object returned by fit,
-optional arguments passed from calls to varimp, and an ellipsis.
-... arguments passed from other methods.
-Details
-If supplied, the grid function should return a list whose elements are named after and contain values
-of parameters to include in a tuning grid to be constructed automatically by the package.
-Values returned by the predict functions should be formatted according to the response variable
-types below.
-factor a vector or column matrix of probabilities for the second level of binary factors or a matrix
-whose columns contain the probabilities for factors with more than two levels.
-matrix a matrix of predicted responses.
-numeric a vector or column matrix of predicted responses.
-Surv a matrix whose columns contain survival probabilities at times if supplied or a vector of
-predicted survival means otherwise.
-The varimp function should return a vector of importance values named after the predictor variables
-or a matrix or data frame whose rows are named after the predictors.
-
-#### Value
-
-MLModel class object.
-See Also
-modelinfo, fit, resample, tune
-
-#### Examples
-```{r}
-
-## Logistic regression model
-LogisticModel <- MLModel(
-name = "LogisticModel",
-types = "binary",
-fit = function(formula, data, weights, ...) {
-glm(formula, data = data, weights = weights, family = binomial, ...)
-},
-predict = function(object, newdata, ...) {
-predict(object, newdata = newdata, type = "response")
-},
-varimp = function(object, ...) {
-pchisq(coef(object)^2 / diag(vcov(object)), 1)
-}
-)
-44 ModelFrame
-library(MASS)
-res <- resample(type ~ ., data = Pima.tr, model = LogisticModel)
-summary(res)
 ```
 
 
@@ -1095,7 +716,6 @@ nrounds maximum number of boosting iterations.
 * ``verbose``: numeric value controlling the amount of output printed during model fitting,
 such that 0 = none, 1 = performance information, and 2 = additional information.
 print_every_n numeric value designating the fitting iterations at at which to print output when verbose > 0.
-XGBModel 75
 objective character string specifying the learning task and objective. Set automatically
 according to the class type of the response variable.
 base_score initial numeric prediction score of all instances, global bias.
