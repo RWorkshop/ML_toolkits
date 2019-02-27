@@ -1,0 +1,46 @@
+AdaBagModel Bagging with Classification Trees
+
+#### Description
+
+Fits the Bagging algorithm proposed by Breiman in 1996 using classification trees as single classifiers.
+
+#### Usage
+<pre><code>
+
+AdaBagModel(mfinal = 100, minsplit = 20,
+minbucket = round(minsplit/3), cp = 0.01, maxcompete = 4,
+maxsurrogate = 5, usesurrogate = 2, xval = 10,
+surrogatestyle = 0, maxdepth = 30)
+
+</code></pre>
+####Arguments
+
+mfinal number of trees to use.
+minsplit minimum number of observations that must exist in a node in order for a split to
+be attempted.
+minbucket minimum number of observations in any terminal node.
+cp complexity parameter.
+maxcompete number of competitor splits retained in the output.
+maxsurrogate number of surrogate splits retained in the output.
+usesurrogate how to use surrogates in the splitting process.
+xval number of cross-validations.
+surrogatestyle controls the selection of a best surrogate.
+maxdepth maximum depth of any node of the final tree, with the root node counted as
+depth 0.
+AdaBoostModel 7
+Details
+Response Types: factor
+Automatic Tuning Grid Parameters: mfinal, maxdepth
+Further model details can be found in the source link below.
+
+#### Value
+
+MLModel class object.
+See Also
+bagging, fit, resample, tune
+
+#### Examples
+```{r}
+
+fit(Species ~ ., data = iris, model = AdaBagModel(mfinal = 5))
+```
