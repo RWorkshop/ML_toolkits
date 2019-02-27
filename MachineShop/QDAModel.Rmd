@@ -1,4 +1,15 @@
-QDAModel Quadratic Discriminant Analysis Model
+---
+title: "``MachineShop::QDAModel``"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(MachineShop)
+```
+
+
+ Quadratic Discriminant Analysis Model
 
 #### Description
 
@@ -11,14 +22,21 @@ QDAModel(prior = NULL, method = c("moment", "mle", "mve", "t"),
 nu = 5, use = c("plug-in", "predictive", "debiased", "looCV"))
 
 </code></pre>
+
 ####Arguments
 
-prior prior probabilities of class membership if specified or the class proportions in
-the training set otherwise.
+* prior prior probabilities of class membership if specified or the class proportions in the training set otherwise.
 method type of mean and variance estimator.
-nu degrees of freedom for method = "t".
-use type of parameter estimation to use for prediction.
-Details
+* nu degrees of freedom for method = "t".
+* use type of parameter estimation to use for prediction.
+
+
+#### Examples
+```{r}
+
+fit(Species ~ ., data = iris, model = QDAModel())
+```
+#### Details
 Response Types: factor
 The predict function for this model additionally accepts the following argument.
 prior prior class membership probabilities for prediction data if different from the training set.
@@ -31,8 +49,3 @@ MLModel class object.
 See Also
 qda, predict.qda, fit, resample, tune
 56 RandomForestModel
-
-#### Examples
-```{r}
-
-fit(Species ~ ., data = iris, model = QDAModel())
