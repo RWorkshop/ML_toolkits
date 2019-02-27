@@ -1,0 +1,72 @@
+
+``XGBModel``
+XGBModel Extreme Gradient Boosting Models
+
+#### Description
+
+Fits models within an efficient implementation of the gradient boosting framework from Chen &
+Guestrin.
+
+#### Usage
+<pre><code>
+
+XGBModel(params = list(), nrounds = 1, verbose = 0,
+print_every_n = 1)
+XGBDARTModel(objective = NULL, base_score = 0.5, eta = 0.3,
+gamma = 0, max_depth = 6, min_child_weight = 1,
+max_delta_step = 0, subsample = 1, colsample_bytree = 1,
+colsample_bylevel = 1, lambda = 1, alpha = 0,
+tree_method = "auto", sketch_eps = 0.03, scale_pos_weight = 1,
+update = "grow_colmaker,prune", refresh_leaf = 1,
+process_type = "default", grow_policy = "depthwise",
+max_leaves = 0, max_bin = 256, sample_type = "uniform",
+normalize_type = "tree", rate_drop = 0, one_drop = 0,
+skip_drop = 0, ...)
+XGBLinearModel(objective = NULL, base_score = 0.5, lambda = 0,
+alpha = 0, updater = "shotgun", feature_selector = "cyclic",
+top_k = 0, ...)
+XGBTreeModel(objective = NULL, base_score = 0.5, eta = 0.3,
+gamma = 0, max_depth = 6, min_child_weight = 1,
+max_delta_step = 0, subsample = 1, colsample_bytree = 1,
+colsample_bylevel = 1, lambda = 1, alpha = 0,
+tree_method = "auto", sketch_eps = 0.03, scale_pos_weight = 1,
+update = "grow_colmaker,prune", refresh_leaf = 1,
+process_type = "default", grow_policy = "depthwise",
+max_leaves = 0, max_bin = 256, ...)
+
+</code></pre>
+####Arguments
+
+* ``params``: list of model parameters as described in the XBoost documentation.
+nrounds maximum number of boosting iterations.
+* ``verbose``: numeric value controlling the amount of output printed during model fitting,
+such that 0 = none, 1 = performance information, and 2 = additional information.
+print_every_n numeric value designating the fitting iterations at at which to print output when verbose > 0.
+objective character string specifying the learning task and objective. Set automatically
+according to the class type of the response variable.
+base_score initial numeric prediction score of all instances, global bias.
+eta, gamma, max_depth, min_child_weight, max_delta_step, subsample, colsample_bytree, colsample_bylevel, see params reference.
+... arguments to be passed to XGBModel.
+Details
+Response Types: factor, numeric
+Automatic Tuning Grid Parameters • XGBDARTModel: nrounds, max_depth, eta, gamma*,
+min_child_weight*, subsample, colsample_bytree, rate_drop, skip_drop
+• XGBLinearModel: nrounds, lambda, alpha
+• XGBTreeModel: nrounds, max_depth, eta, gamma*, min_child_weight*, subsample,
+colsample_bytree
+* included only in randomly sampled grid points
+Default values for the NULL arguments and further model details can be found in the source link below.
+In calls to varimp for XGBTreeModel, argument metric may be spedified as "Gain" (default) for the fractional contribution of each predictor to the total gain of its splits, as "Cover" for the number of observations related to each predictor, or as "Frequency" for the percentage of times each predictor is used in the trees. Variable importance is automatically scaled to range from 0 to 100. To obtain unscaled importance values, set scale = FALSE. See example below.
+
+#### Value
+
+MLModel class object.
+See Also
+xgboost, fit, resample, tune
+
+#### Examples
+```{r}
+
+modelfit <- fit(Species ~ ., data = iris, model = XGBTreeModel())
+varimp(modelfit, metric = "Frequency", scale = FALSE)
+```
