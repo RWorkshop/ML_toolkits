@@ -1,0 +1,52 @@
+AdaBoostModel Boosting with Classification Trees
+
+#### Description
+
+Fits the AdaBoost.M1 (Freund and Schapire, 1996) and SAMME (Zhu et al., 2009) algorithms
+using classification trees as single classifiers.
+
+#### Usage
+<pre><code>
+
+AdaBoostModel(boos = TRUE, mfinal = 100, coeflearn = c("Breiman",
+"Freund", "Zhu"), minsplit = 20, minbucket = round(minsplit/3),
+cp = 0.01, maxcompete = 4, maxsurrogate = 5, usesurrogate = 2,
+xval = 10, surrogatestyle = 0, maxdepth = 30)
+
+</code></pre>
+####Arguments
+
+boos if TRUE, then bootstrap samples are drawn from the training set using the observation
+weights at each iteration. If FALSE, then all observations are used with
+their weights.
+mfinal number of iterations for which boosting is run.
+coeflearn learning algorithm.
+minsplit minimum number of observations that must exist in a node in order for a split to
+be attempted.
+minbucket minimum number of observations in any terminal node.
+cp complexity parameter.
+maxcompete number of competitor splits retained in the output.
+8 BARTMachineModel
+maxsurrogate number of surrogate splits retained in the output.
+usesurrogate how to use surrogates in the splitting process.
+xval number of cross-validations.
+surrogatestyle controls the selection of a best surrogate.
+maxdepth maximum depth of any node of the final tree, with the root node counted as
+depth 0.
+Details
+Response Types: factor
+Automatic Tuning Grid Parameters: mfinal, maxdepth, coeflearn*
+* included only in randomly sampled grid points
+Further model details can be found in the source link below.
+
+#### Value
+
+MLModel class object.
+See Also
+boosting, fit, resample, tune
+
+#### Examples
+```{r}
+
+fit(Species ~ ., data = iris, model = AdaBoostModel(mfinal = 5))
+```
