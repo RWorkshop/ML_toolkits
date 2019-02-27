@@ -1,0 +1,64 @@
+
+metrics Performance Metrics
+
+#### Description
+
+Compute measures of agreement between observed and predicted responses.
+38 metrics
+
+#### Usage
+<pre><code>
+
+accuracy(observed, predicted = NULL, cutoff = 0.5, ...)
+auc(observed, predicted = NULL, metrics = c(MachineShop::tpr,
+MachineShop::fpr), stat = base::mean, ...)
+brier(observed, predicted = NULL, ...)
+cindex(observed, predicted = NULL, ...)
+cross_entropy(observed, predicted = NULL, ...)
+f_score(observed, predicted = NULL, cutoff = 0.5, beta = 1, ...)
+fnr(observed, predicted = NULL, cutoff = 0.5, ...)
+fpr(observed, predicted = NULL, cutoff = 0.5, ...)
+kappa2(observed, predicted = NULL, cutoff = 0.5, ...)
+npv(observed, predicted = NULL, cutoff = 0.5, ...)
+ppv(observed, predicted = NULL, cutoff = 0.5, ...)
+pr_auc(observed, predicted = NULL, ...)
+precision(observed, predicted = NULL, cutoff = 0.5, ...)
+recall(observed, predicted = NULL, cutoff = 0.5, ...)
+roc_auc(observed, predicted = NULL, ...)
+roc_index(observed, predicted = NULL, cutoff = 0.5,
+f = function(sensitivity, specificity) (sensitivity + specificity)/2,
+...)
+rpp(observed, predicted = NULL, cutoff = 0.5, ...)
+sensitivity(observed, predicted = NULL, cutoff = 0.5, ...)
+specificity(observed, predicted = NULL, cutoff = 0.5, ...)
+tnr(observed, predicted = NULL, cutoff = 0.5, ...)
+tpr(observed, predicted = NULL, cutoff = 0.5, ...)
+weighted_kappa2(observed, predicted = NULL, power = 1, ...)
+MLControl 39
+gini(observed, predicted = NULL, ...)
+mae(observed, predicted = NULL, ...)
+mse(observed, predicted = NULL, ...)
+msle(observed, predicted = NULL, ...)
+r2(observed, predicted = NULL, ...)
+rmse(observed, predicted = NULL, ...)
+rmsle(observed, predicted = NULL, ...)
+
+</code></pre>
+####Arguments
+
+* ``observed``:  observed responses, Curves object, or ConfusionMatrix of observed and predicted
+responses.
+predicted predicted responses.
+* ``cutoff``:  threshold above which binary factor probabilities are classified as events and
+below which survival probabilities are classified.
+... arguments passed to or from other methods.
+metrics list of two performance metrics for the calculation [default: ROC metrics].
+stat function to compute a summary statistic at each cutoff value of resampled metrics
+in Curves, or NULL for resample-specific metrics.
+beta relative importance of recall to precision in the calculation of f_score [default:
+F1 score].
+f function to calculate a desired sensitivity-specificity tradeoff.
+power power to which positional distances of off-diagonals from the main diagonal in
+confusion matrices are raised to calculate weighted_kappa2.
+See Also
+metricinfo, confusion, performance, performance_curve
