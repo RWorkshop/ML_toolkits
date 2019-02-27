@@ -1,5 +1,14 @@
+---
+title: "``MachineShop::RandomForestModel``"
+output: html_document
+---
 
-RandomForestModel Random Forest Model
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(MachineShop)
+```
+
+ Random Forest Model
 
 #### Description
 
@@ -14,14 +23,23 @@ floor(sqrt(nvars)) else max(floor(nvars/3), 1)), replace = TRUE,
 nodesize = .(if (is.factor(y)) 1 else 5), maxnodes = NULL)
 
 </code></pre>
+
 ####Arguments
 
-ntree number of trees to grow.
-mtry number of variables randomly sampled as candidates at each split.
-replace should sampling of cases be done with or without replacement?
-nodesize minimum size of terminal nodes.
-maxnodes maximum number of terminal nodes trees in the forest can have.
-Details
+* ntree number of trees to grow.
+* mtry number of variables randomly sampled as candidates at each split.
+* replace should sampling of cases be done with or without replacement?
+* nodesize minimum size of terminal nodes.
+* maxnodes maximum number of terminal nodes trees in the forest can have.
+
+#### Examples
+```{r}
+
+library(MASS)
+fit(medv ~ ., data = Boston, model = RandomForestModel())
+```
+
+#### Details
 Response Types: factor, numeric
 Automatic Tuning Grid Parameters: mtry, nodesize*
 * included only in randomly sampled grid points
@@ -33,10 +51,3 @@ below.
 MLModel class object.
 See Also
 randomForest, fit, resample, tune
-
-#### Examples
-```{r}
-
-library(MASS)
-fit(medv ~ ., data = Boston, model = RandomForestModel())
-RangerModel 57
