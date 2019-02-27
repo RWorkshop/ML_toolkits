@@ -1,0 +1,60 @@
+MLControl Resampling Controls
+
+#### Description
+
+The base MLControl constructor initializes a set of control parameters that are common to all resampling
+methods.
+BootControl constructs an MLControl object for simple bootstrap resampling in which models are
+fit with bootstrap resampled training sets and used to predict the full data set.
+CVControl constructs an MLControl object for repeated K-fold cross-validation. In this procedure,
+the full data set is repeatedly partitioned into K-folds. Within a partitioning, prediction is performed
+on each of the K folds with models fit on all remaining folds.
+OOBControl constructs an MLControl object for out-of-bootstrap resampling in which models are
+fit with bootstrap resampled training sets and used to predict the unsampled cases.
+SplitControl constructs an MLControl object for splitting data into a seperate trianing and test
+set.
+TrainControl constructs an MLControl object for training and performance evaluation to be performed
+on the same training set.
+
+#### Usage
+<pre><code>
+
+MLControl(times = numeric(), seed = NULL, ...)
+BootControl(samples = 25, ...)
+CVControl(folds = 10, repeats = 1, ...)
+OOBControl(samples = 25, ...)
+SplitControl(prop = 2/3, ...)
+TrainControl(...)
+
+</code></pre>
+####Arguments
+
+times numeric vector of follow-up times at which to predict survival probabilities.
+* ``seed``: integer to set the seed at the start of resampling. This is set to a random integer by default (NULL).
+... arguments to be passed to MLControl.
+samples number of bootstrap samples.
+folds number of cross-validation folds (K).
+repeats number of repeats of the K-fold partitioning.
+prop proportion of cases to include in the training set (0 < prop < 1).
+
+#### Value
+
+MLControl class object.
+See Also
+resample
+MLMetric 41
+
+#### Examples
+```{r}
+
+## 100 bootstrap samples
+BootControl(samples = 100)
+## 5 repeats of 10-fold cross-validation
+CVControl(folds = 10, repeats = 5)
+## 100 out-of-bootstrap samples
+OOBControl(samples = 100)
+## Split sample of 2/3 training and 1/3 testing
+SplitControl(prop = 2/3)
+## Same training and test set
+TrainControl()
+```
