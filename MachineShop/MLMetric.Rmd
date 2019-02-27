@@ -1,0 +1,40 @@
+MLMetric MLMetric Class Constructor
+
+#### Description
+
+Create a performance metric for use with the MachineShop package.
+
+#### Usage
+<pre><code>
+
+MLMetric(object, name = "MLMetric", label = name, maximize = TRUE)
+MLMetric(object) <- value
+
+</code></pre>
+####Arguments
+
+object function to compute the metric. Must be defined to accept observed and predicted
+as the first two arguments and with an ellipsis (...) to accommodate others.
+name character string name for the instantiated MLMetric object; same as the metric
+function name.
+label descriptive label for the metric.
+maximize logical indicating whether to maximize the metric for better performance.
+value list of arguments to pass to the MLMetric constructor.
+
+#### Value
+
+MLMetric class object.
+See Also
+metrics, metricinfo
+42 MLModel
+
+#### Examples
+```{r}
+
+f2_score <- function(observed, predicted, ...) {
+f_score(observed, predicted, beta = 2, ...)
+}
+MLMetric(f2_score) <- list(name = "f2_score",
+label = "F Score (beta = 2)",
+maximize = TRUE)
+```
