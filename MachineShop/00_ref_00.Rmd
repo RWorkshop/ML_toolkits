@@ -28,71 +28,71 @@ NeedsCompilation no
 Repository CRAN
 Date/Publication 2019-02-15 16:20:03 UTC
 R topics documented:
-MachineShop-package . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
-. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+MachineShop-package         . . 
+            5
 1
 2 R topics documented:
-AdaBagModel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
-AdaBoostModel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
-BARTMachineModel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
-BARTModel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
-BlackBoostModel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
-C50Model . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
-calibration . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
-CForestModel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
-confusion . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
-CoxModel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
-dependence . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
-diff . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
-EarthModel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
-expand.model . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
-FDAModel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
-fit . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
-GAMBoostModel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
-GBMModel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
-GLMBoostModel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
-GLMModel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 28
-GLMNetModel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
-Grid . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 30
-KNNModel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 31
-LARSModel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 32
-LDAModel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 33
-lift . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 34
-LMModel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 35
-MDAModel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 35
-metricinfo . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 37
-metrics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 37
-MLControl . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 39
-MLMetric . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 41
-MLModel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 42
-ModelFrame . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 44
-modelinfo . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 45
-NaiveBayesModel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 46
-NNetModel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 46
-performance . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 48
-performance_curve . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 49
-plot . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 50
-PLSModel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 52
-POLRModel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 53
-predict . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 54
-QDAModel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 55
-RandomForestModel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 56
-RangerModel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 57
-resample . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 58
-response . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 60
+AdaBagModel           6
+AdaBoostModel          . . . 7
+BARTMachineModel          8
+BARTModel           . 10
+BlackBoostModel          . . 11
+C50Model           . . 13
+calibration           . . 14
+CForestModel           15
+confusion           . . 16
+CoxModel           . . 17
+dependence           . 18
+diff            . . 19
+EarthModel           . 20
+expand.model           21
+FDAModel           . 22
+fit            . . 23
+GAMBoostModel          . . 24
+GBMModel           . 25
+GLMBoostModel          . . 26
+GLMModel           . 28
+GLMNetModel          . . . 29
+Grid            0
+KNNModel           1
+LARSModel           2
+LDAModel           3
+lift            . 4
+LMModel           . 5
+MDAModel           5
+metricinfo           . 7
+metrics            37
+MLControl           9
+MLMetric           . . 41
+MLModel           . . 42
+ModelFrame           . 44
+modelinfo           . . 45
+NaiveBayesModel          . . 46
+NNetModel           . 46
+performance           . 48
+performance_curve          . 49
+plot            . 50
+PLSModel           . . 52
+POLRModel           . 53
+predict            54
+QDAModel           . 55
+RandomForestModel          56
+RangerModel           57
+resample           . . . 58
+response           . . . 60
 MachineShop-package 3
-RPartModel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 60
-StackedModel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 62
-summary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 63
-SuperModel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 64
-SurvMatrix . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 65
-SurvRegModel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 66
-SVMModel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 67
-t.test . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 69
-TreeModel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 70
-tune . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 71
-varimp . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 73
-XGBModel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 74
+RPartModel           . 60
+StackedModel           62
+summary           . . 63
+SuperModel           . 64
+SurvMatrix           . 65
+SurvRegModel          . . . 66
+SVMModel           . 67
+t.test            . 69
+TreeModel           . . 70
+tune            . 71
+varimp            73
+XGBModel           . 74
 Index 76
 MachineShop-package MachineShop: Machine Learning Models and Tools
 
@@ -214,532 +214,10 @@ quote
 library(MASS)
 glmfit <- fit(medv ~ ., Boston, GLMStepAICModel(k = .(log(nobs))))
 varimp(glmfit)
-AdaBagModel Bagging with Classification Trees
-
-#### Description
-
-Fits the Bagging algorithm proposed by Breiman in 1996 using classification trees as single classifiers.
-
-#### Usage
-<pre><code>
-
-AdaBagModel(mfinal = 100, minsplit = 20,
-minbucket = round(minsplit/3), cp = 0.01, maxcompete = 4,
-maxsurrogate = 5, usesurrogate = 2, xval = 10,
-surrogatestyle = 0, maxdepth = 30)
-
-</code></pre>
-####Arguments
-
-mfinal number of trees to use.
-minsplit minimum number of observations that must exist in a node in order for a split to
-be attempted.
-minbucket minimum number of observations in any terminal node.
-cp complexity parameter.
-maxcompete number of competitor splits retained in the output.
-maxsurrogate number of surrogate splits retained in the output.
-usesurrogate how to use surrogates in the splitting process.
-xval number of cross-validations.
-surrogatestyle controls the selection of a best surrogate.
-maxdepth maximum depth of any node of the final tree, with the root node counted as
-depth 0.
-AdaBoostModel 7
-Details
-Response Types: factor
-Automatic Tuning Grid Parameters: mfinal, maxdepth
-Further model details can be found in the source link below.
-
-#### Value
-
-MLModel class object.
-See Also
-bagging, fit, resample, tune
-
-#### Examples
-```{r}
-
-fit(Species ~ ., data = iris, model = AdaBagModel(mfinal = 5))
-AdaBoostModel Boosting with Classification Trees
-
-#### Description
-
-Fits the AdaBoost.M1 (Freund and Schapire, 1996) and SAMME (Zhu et al., 2009) algorithms
-using classification trees as single classifiers.
-
-#### Usage
-<pre><code>
-
-AdaBoostModel(boos = TRUE, mfinal = 100, coeflearn = c("Breiman",
-"Freund", "Zhu"), minsplit = 20, minbucket = round(minsplit/3),
-cp = 0.01, maxcompete = 4, maxsurrogate = 5, usesurrogate = 2,
-xval = 10, surrogatestyle = 0, maxdepth = 30)
-
-</code></pre>
-####Arguments
-
-boos if TRUE, then bootstrap samples are drawn from the training set using the observation
-weights at each iteration. If FALSE, then all observations are used with
-their weights.
-mfinal number of iterations for which boosting is run.
-coeflearn learning algorithm.
-minsplit minimum number of observations that must exist in a node in order for a split to
-be attempted.
-minbucket minimum number of observations in any terminal node.
-cp complexity parameter.
-maxcompete number of competitor splits retained in the output.
-8 BARTMachineModel
-maxsurrogate number of surrogate splits retained in the output.
-usesurrogate how to use surrogates in the splitting process.
-xval number of cross-validations.
-surrogatestyle controls the selection of a best surrogate.
-maxdepth maximum depth of any node of the final tree, with the root node counted as
-depth 0.
-Details
-Response Types: factor
-Automatic Tuning Grid Parameters: mfinal, maxdepth, coeflearn*
-* included only in randomly sampled grid points
-Further model details can be found in the source link below.
-
-#### Value
-
-MLModel class object.
-See Also
-boosting, fit, resample, tune
-
-#### Examples
-```{r}
-
-fit(Species ~ ., data = iris, model = AdaBoostModel(mfinal = 5))
-BARTMachineModel Bayesian Additive Regression Trees Model
-
-#### Description
-
-Builds a BART model for regression or classification.
-
-#### Usage
-<pre><code>
-
-BARTMachineModel(num_trees = 50, num_burn = 250, num_iter = 1000,
-alpha = 0.95, beta = 2, k = 2, q = 0.9, nu = 3,
-mh_prob_steps = c(2.5, 2.5, 4)/9, verbose = FALSE, ...)
-BARTMachineModel 9
-
-</code></pre>
-####Arguments
-
-num_trees number of trees to be grown in the sum-of-trees model.
-num_burn number of MCMC samples to be discarded as "burn-in".
-num_iter number of MCMC samples to draw from the posterior distribution.
-alpha, beta base and power hyperparameters in tree prior for whether a node is nonterminal
-or not.
-k regression prior probability that E(Y jX) is contained in the interval (ymin; ymax),
-based on a normal distribution.
-q quantile of the prior on the error variance at which the data-based estimate is
-placed.
-nu regression degrees of freedom for the inverse X2 prior.
-mh_prob_steps vector of prior probabilities for proposing changes to the tree structures: (GROW,
-PRUNE, CHANGE).
-verbose logical indicating whether to print progress information about the algorithm.
-... additional arguments to bartMachine.
-Details
-Response Types: binary, numeric
-Automatic Tuning Grid Parameters: alpha, beta, k, nu
-Further model details can be found in the source link below.
-In calls to varimp for BARTMachineModel, argument metric may be spedified as "splits" (default)
-for the proportion of time each predictor is chosen for a splitting rule or as "trees" for the
-proportion of times each predictor appears in a tree. Argument num_replicates is also available
-to control the number of BART replicates used in estimating the inclusion proportions [default: 5].
-Variable importance is automatically scaled to range from 0 to 100. To obtain unscaled importance
-values, set scale = FALSE. See example below.
-
-#### Value
-
-MLModel class object.
-See Also
-bartMachine, fit, resample, tune
-
-#### Examples
-```{r}
-
-library(MASS)
-modelfit <- fit(medv ~ ., data = Boston, model = BARTMachineModel())
-varimp(modelfit, metric = "splits", num_replicates = 20, scale = FALSE)
-```
-BlackBoostModel Gradient Boosting with Regression Trees
-
-#### Description
-
-Gradient boosting for optimizing arbitrary loss functions where regression trees are utilized as baselearners.
-
-#### Usage
-<pre><code>
-
-BlackBoostModel(family = NULL, mstop = 100, nu = 0.1,
-risk = c("inbag", "oobag", "none"), stopintern = FALSE,
-trace = FALSE, teststat = c("quadratic", "maximum"),
-testtype = c("Teststatistic", "Univariate", "Bonferroni",
-"MonteCarlo"), mincriterion = 0, minsplit = 10, minbucket = 4,
-maxdepth = 2, saveinfo = FALSE, ...)
-12 BlackBoostModel
-
-</code></pre>
-####Arguments
-
-family Family object. Set automatically according to the class type of the response
-variable.
-* ``mstop``: number of initial boosting iterations.
-nu step size or shrinkage parameter between 0 and 1.
-risk method to use in computing the empirical risk for each boosting iteration.
-stopintern logical inidicating whether the boosting algorithm stops internally when the outof-
-bag risk increases at a subsequent iteration.
-trace logical indicating whether status information is printed during the fitting process.
-teststat type of the test statistic to be applied for variable selection.
-testtype how to compute the distribution of the test statistic.
-mincriterion value of the test statistic or 1 - p-value that must be exceeded in order to implement
-a split.
-minsplit minimum sum of weights in a node in order to be considered for splitting.
-minbucket minimum sum of weights in a terminal node.
-maxdepth maximum depth of the tree.
-saveinfo logical indicating whether to store information about variable selection in info
-slot of each partynode.
-... additional arguments to ctree_control.
-Details
-Response Types: binary, numeric, Surv
-Automatic Tuning Grid Parameters: mstop, maxdepth
-Default values for the NULL arguments and further model details can be found in the source links
-below.
-
-#### Value
-
-MLModel class object.
-See Also
-blackboost, Family, ctree_control, fit, resample, tune
-
-#### Examples
-```{r}
-
-library(MASS)
-fit(type ~ ., data = Pima.tr, model = BlackBoostModel())
-
-
-
-
-
-
-LDAModel Linear Discriminant Analysis Model
-
-#### Description
-
-Performs linear discriminant analysis.
-
-#### Usage
-<pre><code>
-
-LDAModel(prior = NULL, tol = 1e-04, method = c("moment", "mle",
-"mve", "t"), nu = 5, dimen = NULL, use = c("plug-in", "debiased",
-"predictive"))
-
-</code></pre>
-####Arguments
-
-prior prior probabilities of class membership if specified or the class proportions in
-the training set otherwise.
-tol tolerance for the determination of singular matrices.
-method type of mean and variance estimator.
-nu degrees of freedom for method = "t".
-dimen dimension of the space to use for prediction.
-use type of parameter estimation to use for prediction.
-Details
-Response Types: factor
-Automatic Tuning Grid Parameters: dimen
-The predict function for this model additionally accepts the following argument.
-prior prior class membership probabilities for prediction data if different from the training set.
-Default values for the NULL arguments and further model details can be found in the source links
-below.
-
-#### Value
-
-MLModel class object.
-See Also
-lda, predict.lda, fit, resample, tune
-34 lift
-
-#### Examples
-```{r}
-
-fit(Species ~ ., data = iris, model = LDAModel())
 ```
 
 
 
 
-metrics Performance Metrics
-
-#### Description
-
-Compute measures of agreement between observed and predicted responses.
-38 metrics
-
-#### Usage
-<pre><code>
-
-accuracy(observed, predicted = NULL, cutoff = 0.5, ...)
-auc(observed, predicted = NULL, metrics = c(MachineShop::tpr,
-MachineShop::fpr), stat = base::mean, ...)
-brier(observed, predicted = NULL, ...)
-cindex(observed, predicted = NULL, ...)
-cross_entropy(observed, predicted = NULL, ...)
-f_score(observed, predicted = NULL, cutoff = 0.5, beta = 1, ...)
-fnr(observed, predicted = NULL, cutoff = 0.5, ...)
-fpr(observed, predicted = NULL, cutoff = 0.5, ...)
-kappa2(observed, predicted = NULL, cutoff = 0.5, ...)
-npv(observed, predicted = NULL, cutoff = 0.5, ...)
-ppv(observed, predicted = NULL, cutoff = 0.5, ...)
-pr_auc(observed, predicted = NULL, ...)
-precision(observed, predicted = NULL, cutoff = 0.5, ...)
-recall(observed, predicted = NULL, cutoff = 0.5, ...)
-roc_auc(observed, predicted = NULL, ...)
-roc_index(observed, predicted = NULL, cutoff = 0.5,
-f = function(sensitivity, specificity) (sensitivity + specificity)/2,
-...)
-rpp(observed, predicted = NULL, cutoff = 0.5, ...)
-sensitivity(observed, predicted = NULL, cutoff = 0.5, ...)
-specificity(observed, predicted = NULL, cutoff = 0.5, ...)
-tnr(observed, predicted = NULL, cutoff = 0.5, ...)
-tpr(observed, predicted = NULL, cutoff = 0.5, ...)
-weighted_kappa2(observed, predicted = NULL, power = 1, ...)
-MLControl 39
-gini(observed, predicted = NULL, ...)
-mae(observed, predicted = NULL, ...)
-mse(observed, predicted = NULL, ...)
-msle(observed, predicted = NULL, ...)
-r2(observed, predicted = NULL, ...)
-rmse(observed, predicted = NULL, ...)
-rmsle(observed, predicted = NULL, ...)
-
-</code></pre>
-####Arguments
-
-* ``observed``:  observed responses, Curves object, or ConfusionMatrix of observed and predicted
-responses.
-predicted predicted responses.
-* ``cutoff``:  threshold above which binary factor probabilities are classified as events and
-below which survival probabilities are classified.
-... arguments passed to or from other methods.
-metrics list of two performance metrics for the calculation [default: ROC metrics].
-stat function to compute a summary statistic at each cutoff value of resampled metrics
-in Curves, or NULL for resample-specific metrics.
-beta relative importance of recall to precision in the calculation of f_score [default:
-F1 score].
-f function to calculate a desired sensitivity-specificity tradeoff.
-power power to which positional distances of off-diagonals from the main diagonal in
-confusion matrices are raised to calculate weighted_kappa2.
-See Also
-metricinfo, confusion, performance, performance_curve
-MLControl Resampling Controls
-
-#### Description
-
-The base MLControl constructor initializes a set of control parameters that are common to all resampling
-methods.
-BootControl constructs an MLControl object for simple bootstrap resampling in which models are
-fit with bootstrap resampled training sets and used to predict the full data set.
-CVControl constructs an MLControl object for repeated K-fold cross-validation. In this procedure,
-the full data set is repeatedly partitioned into K-folds. Within a partitioning, prediction is performed
-on each of the K folds with models fit on all remaining folds.
-OOBControl constructs an MLControl object for out-of-bootstrap resampling in which models are
-fit with bootstrap resampled training sets and used to predict the unsampled cases.
-SplitControl constructs an MLControl object for splitting data into a seperate trianing and test
-set.
-TrainControl constructs an MLControl object for training and performance evaluation to be performed
-on the same training set.
-
-#### Usage
-<pre><code>
-
-MLControl(times = numeric(), seed = NULL, ...)
-BootControl(samples = 25, ...)
-CVControl(folds = 10, repeats = 1, ...)
-OOBControl(samples = 25, ...)
-SplitControl(prop = 2/3, ...)
-TrainControl(...)
-
-</code></pre>
-####Arguments
-
-times numeric vector of follow-up times at which to predict survival probabilities.
-* ``seed``: integer to set the seed at the start of resampling. This is set to a random integer by default (NULL).
-... arguments to be passed to MLControl.
-samples number of bootstrap samples.
-folds number of cross-validation folds (K).
-repeats number of repeats of the K-fold partitioning.
-prop proportion of cases to include in the training set (0 < prop < 1).
-
-#### Value
-
-MLControl class object.
-See Also
-resample
-MLMetric 41
-
-#### Examples
-```{r}
-
-## 100 bootstrap samples
-BootControl(samples = 100)
-## 5 repeats of 10-fold cross-validation
-CVControl(folds = 10, repeats = 5)
-## 100 out-of-bootstrap samples
-OOBControl(samples = 100)
-## Split sample of 2/3 training and 1/3 testing
-SplitControl(prop = 2/3)
-## Same training and test set
-TrainControl()
-MLMetric MLMetric Class Constructor
-
-#### Description
-
-Create a performance metric for use with the MachineShop package.
-
-#### Usage
-<pre><code>
-
-MLMetric(object, name = "MLMetric", label = name, maximize = TRUE)
-MLMetric(object) <- value
-
-</code></pre>
-####Arguments
-
-object function to compute the metric. Must be defined to accept observed and predicted
-as the first two arguments and with an ellipsis (...) to accommodate others.
-name character string name for the instantiated MLMetric object; same as the metric
-function name.
-label descriptive label for the metric.
-maximize logical indicating whether to maximize the metric for better performance.
-value list of arguments to pass to the MLMetric constructor.
-
-#### Value
-
-MLMetric class object.
-See Also
-metrics, metricinfo
-42 MLModel
-
-#### Examples
-```{r}
-
-f2_score <- function(observed, predicted, ...) {
-f_score(observed, predicted, beta = 2, ...)
-}
-MLMetric(f2_score) <- list(name = "f2_score",
-label = "F Score (beta = 2)",
-maximize = TRUE)
-```
 
 
-varimp 73
-varimp Variable Importance
-
-#### Description
-
-Calculate measures of the relative importance of predictors in a model.
-
-#### Usage
-<pre><code>
-
-varimp(object, scale = TRUE, ...)
-
-</code></pre>
-####Arguments
-
-object MLModelFit object from a model fit.
-scale logical indicating whether importance measures should be scaled to range from
-0 to 100.
-... arguments passed to model-specific variable importance functions.
-
-#### Value
-
-VarImp class object.
-See Also
-fit, plot
-
-#### Examples
-```{r}
-
-## Survival response example
-library(survival)
-library(MASS)
-gbmfit <- fit(Surv(time, status != 2) ~ sex + age + year + thickness + ulcer,
-data = Melanoma, model = GBMModel)
-(vi <- varimp(gbmfit))
-plot(vi)
-74 XGBModel
-XGBModel Extreme Gradient Boosting Models
-
-#### Description
-
-Fits models within an efficient implementation of the gradient boosting framework from Chen &
-Guestrin.
-
-#### Usage
-<pre><code>
-
-XGBModel(params = list(), nrounds = 1, verbose = 0,
-print_every_n = 1)
-XGBDARTModel(objective = NULL, base_score = 0.5, eta = 0.3,
-gamma = 0, max_depth = 6, min_child_weight = 1,
-max_delta_step = 0, subsample = 1, colsample_bytree = 1,
-colsample_bylevel = 1, lambda = 1, alpha = 0,
-tree_method = "auto", sketch_eps = 0.03, scale_pos_weight = 1,
-update = "grow_colmaker,prune", refresh_leaf = 1,
-process_type = "default", grow_policy = "depthwise",
-max_leaves = 0, max_bin = 256, sample_type = "uniform",
-normalize_type = "tree", rate_drop = 0, one_drop = 0,
-skip_drop = 0, ...)
-XGBLinearModel(objective = NULL, base_score = 0.5, lambda = 0,
-alpha = 0, updater = "shotgun", feature_selector = "cyclic",
-top_k = 0, ...)
-XGBTreeModel(objective = NULL, base_score = 0.5, eta = 0.3,
-gamma = 0, max_depth = 6, min_child_weight = 1,
-max_delta_step = 0, subsample = 1, colsample_bytree = 1,
-colsample_bylevel = 1, lambda = 1, alpha = 0,
-tree_method = "auto", sketch_eps = 0.03, scale_pos_weight = 1,
-update = "grow_colmaker,prune", refresh_leaf = 1,
-process_type = "default", grow_policy = "depthwise",
-max_leaves = 0, max_bin = 256, ...)
-
-</code></pre>
-####Arguments
-
-* ``params``: list of model parameters as described in the XBoost documentation.
-nrounds maximum number of boosting iterations.
-* ``verbose``: numeric value controlling the amount of output printed during model fitting,
-such that 0 = none, 1 = performance information, and 2 = additional information.
-print_every_n numeric value designating the fitting iterations at at which to print output when verbose > 0.
-objective character string specifying the learning task and objective. Set automatically
-according to the class type of the response variable.
-base_score initial numeric prediction score of all instances, global bias.
-eta, gamma, max_depth, min_child_weight, max_delta_step, subsample, colsample_bytree, colsample_bylevel, see params reference.
-... arguments to be passed to XGBModel.
-Details
-Response Types: factor, numeric
-Automatic Tuning Grid Parameters • XGBDARTModel: nrounds, max_depth, eta, gamma*,
-min_child_weight*, subsample, colsample_bytree, rate_drop, skip_drop
-• XGBLinearModel: nrounds, lambda, alpha
-• XGBTreeModel: nrounds, max_depth, eta, gamma*, min_child_weight*, subsample,
-colsample_bytree
-* included only in randomly sampled grid points
-Default values for the NULL arguments and further model details can be found in the source link below.
-In calls to varimp for XGBTreeModel, argument metric may be spedified as "Gain" (default) for the fractional contribution of each predictor to the total gain of its splits, as "Cover" for the number of observations related to each predictor, or as "Frequency" for the percentage of times each predictor is used in the trees. Variable importance is automatically scaled to range from 0 to 100. To obtain unscaled importance values, set scale = FALSE. See example below.
-
-#### Value
-
-MLModel class object.
-See Also
-xgboost, fit, resample, tune
-
-#### Examples
-```{r}
-
-modelfit <- fit(Species ~ ., data = iris, model = XGBTreeModel())
-varimp(modelfit, metric = "Frequency", scale = FALSE)
