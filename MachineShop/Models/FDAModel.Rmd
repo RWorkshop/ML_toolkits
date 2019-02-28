@@ -24,22 +24,19 @@ PDAModel(lambda = 1, df = NULL, ...)
 </code></pre>
 ####Arguments
 
-theta optional matrix of class scores, typically with number of columns less than one
+* theta optional matrix of class scores, typically with number of columns less than one
 minus the number of classes.
-dimension dimension of the discriminant subspace, less than the number of classes, to use
+* dimension dimension of the discriminant subspace, less than the number of classes, to use
 for prediction.
-eps numeric threshold for small singular values for excluding discriminant variables.
-method regression function used in optimal scaling. The default of linear regression
-is provided by polyreg from the mda package. For penalized discriminant
-analysis, gen.ridge is appropriate. Other possibilities are mars for multivariate
-adaptive regression splines and bruto for adaptive backfitting of additive
-splines. Use the . operator to quote specified functions.
-... additional arguments to method for FDAModel and to FDAModel for PDAModel.
-lambda shrinkage penalty coefficient.
-df alternative specification of lambda in terms of equivalent degrees of freedom.
-fit 23
+* eps numeric threshold for small singular values for excluding discriminant variables.
+* method regression function used in optimal scaling. The default of linear regression is provided by polyreg from the mda package. For penalized discriminant
+analysis, gen.ridge is appropriate. Other possibilities are mars for multivariate adaptive regression splines and bruto for adaptive backfitting of additive splines. Use the . operator to quote specified functions.
+* ... additional arguments to method for FDAModel and to FDAModel for PDAModel.
+* lambda shrinkage penalty coefficient.
+* df alternative specification of lambda in terms of equivalent degrees of freedom.
 
 #### Examples
+
 ```{r}
 
 fit(Species ~ ., data = iris, model = FDAModel())
@@ -47,14 +44,15 @@ fit(Species ~ ., data = iris, model = PDAModel())
 ```
 
 #### Details
+
 Response Types: factor
 Automatic Tuning Grid Parameters • FDAModel: nprune, degree*
 • PDAModel: lambda
 * included only in randomly sampled grid points
+
 The predict function for this model additionally accepts the following argument.
 prior prior class membership probabilities for prediction data if different from the training set.
-Default values for the NULL arguments and further model details can be found in the source links
-below.
+Default values for the NULL arguments and further model details can be found in the source links below.
 
 #### Value
 
