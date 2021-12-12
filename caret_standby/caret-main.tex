@@ -1,0 +1,97 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage{epsfig}
+\usepackage{subfigure}
+%\usepackage{amscd}
+\usepackage{amssymb}
+\usepackage{subfiles}
+\usepackage{framed}
+\usepackage{amsbsy}
+\usepackage{amsthm, amsmath}
+%\usepackage[dvips]{graphicx}
+\usepackage{natbib}
+\bibliographystyle{chicago}
+\usepackage{vmargin}
+% left top textwidth textheight headheight
+% headsep footheight footskip
+\setmargins{3.0cm}{2.5cm}{15.5 cm}{22cm}{0.5cm}{0cm}{1cm}{1cm}
+\renewcommand{\baselinestretch}{1.5}
+\pagenumbering{arabic}
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{ill}[theorem]{Example}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\newtheorem{axiom}{Axiom}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{notation}{Notation}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}[section]
+\newtheorem{example}{Example}[section]
+\renewcommand{\thenotation}{}
+\renewcommand{\thetable}{\thesection.\arabic{table}}
+\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+\voffset=-1.5cm
+\oddsidemargin=1.8cm
+\textwidth = 490pt
+
+
+\begin{document}
+\tableofcontents
+\subfile{caret-loadpackages.tex}
+% \subfile{caret-otherpackages.tex}
+\newpage
+\subfile{caret-introduction.tex}
+\subfile{caret-predictionbasics}
+%\subfile{caret-discussion.tex}	
+\subfile{caret-cart}
+\subfile{caret-metrics}
+\subfile{caret-resampling}
+\subfile{caret-treepruning.tex}  
+\subfile{caret-randomforest.tex}
+\newpage
+
+%--------------------------------- %
+\newpage
+% - FIX UP - % \subfile{caret-cart}
+%\subfile{caret-trees.tex}  
+\subfile{caret-preprocessing.tex}
+\newpage
+\subfile{caret-trainfunction.tex}
+% - FIX UP - % \subfile{caret-methods}
+\newpage
+\subfile{caret-datapartitioning.tex}
+\subfile{caret-traincontrol.tex}	
+
+
+\newpage
+\subfile{caret-baggingboosting.tex}	
+%\subfile{caret-bagfunction.tex}	
+
+%------------------------%
+\subfile{caret-bostonhousing.tex} % Good - More	
+	
+\subfile{caret-irisexample1.tex}
+
+%\subfile{caret-oilexample.tex}	
+% \subfile{caret-plsda.tex}   MERGE THIS INTO SONAR EXAMPLE
+
+
+
+\subfile{caret-sonar.tex}	
+\subfile{caret-scheduleexample.tex}
+\subfile{caret-summaries.tex}	
+
+%--------------------------------- %
+
+%\subfile{caret-c50.tex}                 
+    
+           
+%\subfile{caret-summaries.tex}           
+      
+       
+ \subfile{caret-variableimportance.tex}  
+
+\end{document}

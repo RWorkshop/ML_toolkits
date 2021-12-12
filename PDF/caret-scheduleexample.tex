@@ -1,0 +1,92 @@
+\documentclass[caret-main.tex]{subfiles}
+\begin{document}
+%---------------------------------------------------%
+% https://static.squarespace.com/static/51156277e4b0b8b2ffe11c00/t/51e7e42ce4b0fd2e32684bca/1374151724529/user_C5.0.pdf
+
+\section{Scheduling Data}
+
+These data consist of information on 4331 jobs in a high performance computing environment. Seven attributes were recorded for each job along with a discrete class describing the execution time.
+
+\noindent The predictors are:
+\begin{description}
+\item[Protocol] (the type of computation), \item[Compounds] (the number of data points for each jobs), 
+\item[InputFields] (the number of characteristic being estimated), 
+\item[Iterations] (maximum number of iterations for the computations), 
+\item[NumPending] (the number of other jobs pending at the time of launch), 
+\item[Hour] (decimal hour of day for launch time), 
+\item[Day] (of launch time).
+\end{description} 
+
+The classes are: VF (very fast), F (fast), M (moderate) and L (long).
+\newpage
+\begin{framed}
+\begin{verbatim}
+library(AppliedPredictiveModeling)
+data(schedulingData)
+
+library(caret)
+set.seed(733)
+inTrain <- createDataPartition(schedulingData$Class, p = .75, 
+		   list = FALSE)
+		   
+training <- schedulingData[ inTrain,]
+testing <- schedulingData[-inTrain,]
+\end{verbatim}
+\end{framed}
+
+\begin{verbatim}
+> dim(schedulingData)
+[1] 4331    8
+>
+> dim(training)
+[1] 3251    8
+>
+> dim(testing)
+[1] 1080    8
+> 
+\end{verbatim}
+
+
+%------------------------------------------------------%
+\newpage
+\begin{framed}
+\begin{verbatim}
+library(C50)
+oneTree <- C5.0(Class ~ ., data = training)
+\end{verbatim}
+\end{framed}
+
+\begin{verbatim}
+>  oneTree
+
+Call:
+C5.0.formula(formula = Class ~ ., data = training)
+
+Classification Tree
+Number of samples: 3251 
+Number of predictors: 7 
+
+Tree size: 199 
+
+Non-standard options: attempt to group attributes
+\end{verbatim}
+\newpage
+\begin{framed}
+\begin{verbatim}
+ oneTreePred <- predict(oneTree, testing)
+ oneTreeProbs <- predict(oneTree, testing, type ="prob")
+ postResample(oneTreePred, testing$Class)
+\end{verbatim}
+\end{framed}
+
+\begin{verbatim}
+> table(testing$Class,oneTreePred)
+    oneTreePred
+      VF   F   M   L
+  VF 512  38   2   0
+  F   50 256  26   4
+  M    6  46  67   9
+  L    0   7  10  47
+
+\end{verbatim}
+\end{document}

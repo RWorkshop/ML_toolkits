@@ -1,0 +1,7 @@
+
+\section{Machine Learning Methods}
+
+
+\subsection{Support Vector Machines}
+
+\subsection{Gradient Boosting}

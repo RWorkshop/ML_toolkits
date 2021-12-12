@@ -1,0 +1,54 @@
+---
+title: "caret Workshop"
+output: 
+  flexdashboard::flex_dashboard:
+    theme: united
+    css: style.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(caret)
+library(rpart)
+library(mlbench)
+library(randomForest)
+library(party)
+```
+
+
+Preparation {data-navmenu="Introduction"}
+===================================
+
+<pre><code>
+library(caret)
+library(mlbench)
+library(rpart)
+</code></pre>
+
+The Train Function {data-navmenu="Model Building"}
+===================================
+```{r child="caret-source/caret-trainfunction.Rmd"}
+```
+
+
+Iris {data-navmenu="Worked Examples"}
+===================================
+```{r child="caret-source/caret-irisexample1.Rmd"}
+```
+
+
+Oil Data {data-navmenu="Worked Examples"}
+===================================
+```{r child="caret-source/caret-oilexample.Rmd"}
+```
+
+
+Boston Housing {data-navmenu="Worked Examples"}
+===================================
+```{r child="caret-source/caret-bostonhousing.Rmd"}
+```
+
+
+```{r child="caret-source/caret-variableimportance.Rmd"}
+```

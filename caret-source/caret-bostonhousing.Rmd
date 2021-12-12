@@ -1,0 +1,25 @@
+### Boston Housing Examples
+
+
+```{r}
+# library(mlbench)
+data(BostonHousing)
+ 
+lmFit <- train(medv ~ . + rm:lstat,
+               data = BostonHousing, 
+               "lm")
+summary(lmFit)
+
+```
+
+```{r}
+# library(rpart)
+rpartFit <- train(medv ~ .,
+                  data = BostonHousing,
+                  "rpart",
+                  tuneLength = 9)
+                  
+summary(rpartFit)                  
+```
+
+<p>

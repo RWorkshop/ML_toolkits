@@ -1,0 +1,15 @@
+\documentclass[caret-main.tex]{subfiles}
+\begin{document}
+\section{Bagging}
+
+The \texttt{bag} function offers a general platform for bagging classification and regression models. Like rfe and sbf, it is open and models are specified by declaring functions for the model fitting and prediction code (and several built-in sets of functions exist in the package). The function bagControl has options to specify the functions (more details below).
+
+The function also has a few non-standard features:
+
+\begin{itemize}
+\item The argument \texttt{var} can enable random sampling of the predictors at each bagging iteration. This is to de-correlate the bagged models in the same spirit of random forests (although here the sampling is done once for the whole model). The default is to use all the predictors for each model.
+\item The \texttt{bagControl} function has a logical argument called downSample that is useful for classification models with severe class imbalance. The bootstrapped data set is reduced so that the sample sizes for the classes with larger frequencies are the same as the sample size for the minority class.
+\item If a parallel backend for the foreach package has been loaded and registered, the bagged models can be trained in parallel.
+\end{itemize}
+
+\end{document}

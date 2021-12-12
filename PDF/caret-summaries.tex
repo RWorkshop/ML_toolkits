@@ -1,0 +1,16 @@
+\documentclass[caret-main.tex]{subfiles}
+\begin{document}
+
+%---------------------------------------------------------------------%
+\section{Summary Outputs}
+The \texttt{summaryFunction} argument is used to pas in a function that takes the observed and predicted
+values and estimate some measure of performance. Two such functions are already included in the
+package: defaultSummary and twoClassSummary. 
+
+The latter will compute measures speciﬁc to two–class
+problems, such as the area under the ROC curve, the sensitivity and speciﬁcity. Since the ROC
+curve is based on the predicted class probabilities (which are not computed automatically), another
+option is required. The classProbs = TRUE option is used to include these calculations.
+
+
+\end{document}

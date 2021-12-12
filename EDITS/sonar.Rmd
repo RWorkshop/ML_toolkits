@@ -1,0 +1,4 @@
+The sonar dataset is a standard machine learning dataset for binary classification. 
+It involves 60 real-valued inputs and a two-class target variable. 
+There are 208 examples in the dataset and the classes are reasonably balanced.
+* https://datahub.io/machine-learning/sonar#readme   

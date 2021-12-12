@@ -1,0 +1,28 @@
+\documentclass[caret-main.tex]{subfiles}
+\begin{document}
+\section{\texttt{trainControl}}
+%---------------------------------------------------------------%
+\begin{framed}
+\begin{verbatim}
+library(caret)
+ctrl <- trainControl(method = "cv", savePred=T, classProb=T)
+mod <- train(Species~., data=iris, method = "svmLinear", trControl = ctrl)
+head(mod$pred)
+\end{verbatim}
+\end{framed}
+%---------------------------------------------------------------%
+
+The "C" is one of tuning parameters for your SVM. 
+Check out the help for the ksvm function in the kernlab package for more details.
+
+Trivial regression example
+\begin{framed}
+\begin{verbatim}
+library(caret)
+ctrl <- trainControl(method = "cv", savePred=T)
+mod <- train(Sepal.Length~., data=iris, method = "svmLinear", trControl = ctrl)
+head(mod$pred)
+\end{verbatim}
+\end{framed}
+%---------------------------------------------------------------%
+\end{document}

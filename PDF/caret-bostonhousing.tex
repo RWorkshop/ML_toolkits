@@ -1,0 +1,22 @@
+\documentclass[caret-main.tex]{subfiles}
+\begin{document}
+
+\begin{framed}
+\begin{verbatim}
+library(mlbench)
+data(BostonHousing)
+ 
+lmFit <- train(medv ~ . + rm:lstat,
+               data = BostonHousing, 
+               "lm")
+ 
+library(rpart)
+rpartFit <- train(medv ~ .,
+                  data = BostonHousing,
+                  "rpart",
+                  tuneLength = 9)
+                  
+                  
+\end{verbatim}
+\end{framed}
+\end{document}

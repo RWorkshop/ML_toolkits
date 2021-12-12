@@ -1,0 +1,76 @@
+
+#### ROC Curves
+
+% What are ROC Cuves?
+
+This type of graph is called a Receiver Operating Characteristic curve (or ROC curve.) It is a plot of the true positive rate against the false positive rate for the different possible cutpoints of a diagnostic test.
+
+An ROC curve demonstrates several things:
+
+It shows the tradeoff between sensitivity and specificity (any increase in sensitivity will be accompanied by a decrease in specificity).
+The closer the curve follows the left-hand border and then the top border of the ROC space, the more accurate the test.
+The closer the curve comes to the 45-degree diagonal of the ROC space, the less accurate the test.
+The slope of the tangent line at a cutpoint gives the likelihood ratio (LR) for that value of the test. You can check this out on the graph above. Recall that the LR for T4 < 5 is 52. This corresponds to the far left, steep portion of the curve. The LR for T4 > 9 is 0.2. This corresponds to the far right, nearly horizontal portion of the curve.
+The area under the curve is a measure of text accuracy.
+
+
+%--------------------------------------------%
+\begin{figure}
+\centering
+\includegraphics[width=0.4\linewidth]{./ROCcurve}
+\caption{}
+\label{fig:ROCcurve}
+\end{figure}
+
+%--------------------------------------------%
+% http://stats.stackexchange.com/questions/24325/lorenz-curve-and-gini-coefficient-for-measuring-classifier-performance
+
+#### The ROC Curve}
+The \textbf{\textit{aSAH}} dataset summarizes several clinical and one laboratory variable of 113 patients with an aneurysmal subarachnoid hemorrhage.
+
+```{r}
+Xavier Robin, Natacha Turck, Alexandre Hainard, et al. (2011) “pROC: an open-source package for R and S+ to analyze and compare ROC curves”. BMC Bioinformatics, 7, 77. DOI: 10.1186/1471-2105-12-77
+```
+
+```{r}
+> tail(aSAH)
+    gos6 outcome gender age wfns s100b  ndka
+136    5    Good Female  68    4  0.47 10.33
+137    4    Good   Male  53    4  0.17 13.87
+138    1    Poor   Male  58    5  0.44 15.89
+139    5    Good Female  32    1  0.15 22.43
+140    5    Good Female  39    1  0.50  6.79
+141    5    Good   Male  34    1  0.48 13.45
+```
+%---------------------------------------------%
+
+\item
+\item
+<p>
+%---------------------------------------------%
+
+```{r}
+library(pROC)
+data(aSAH)
+# Basic example with 2 roc objects
+roc1 <- roc(aSAH$outcome, aSAH$s100b)
+```
+
+
+```{r}
+> roc1
+
+Call:
+roc.default(response = aSAH$outcome, predictor = aSAH$s100b)
+
+Data: aSAH$s100b in 72 controls (aSAH$outcome Good) < 41 cases (aSAH$outcome Poor).
+Area under the curve: 0.7314
+
+```
+
+%--------------------------------------------%
+
+% plot(roc1)
+% asah-roccurve
+
+<p>
