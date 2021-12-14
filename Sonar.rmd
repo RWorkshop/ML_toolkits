@@ -1,0 +1,16 @@
+The Sonar Data Set
+
+===================================================
+The Sonar data consist of 208 data points collected on 60 predictors. The goal is to predict the two
+classes (M for metal cylinder or R for rock).
+
+First, we split the data into two groups: a training set and a test set. 
+To do this, the **createDataPartition** function is used
+
+```{r}
+
+library(caret)
+library(mlbench)
+data(Sonar)
+set.seed(107)
+````
